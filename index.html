@@ -223,7 +223,7 @@ footer{padding:35px 0;color:var(--muted);border-top:1px solid var(--line);margin
 
 <script>
 const SUPABASE_URL = "https://ipgrulvyaqxnbhiotgry.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_0t7PIpiFqpxy5RKP2WOiew_nQMFM-uf
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_0t7PIpiFqpxy5RKP2WOiew_nQMFM-uf";
 
 const sb = window.supabase.createClient(
   SUPABASE_URL,
@@ -511,4 +511,275 @@ function randomTip(){
  "Use MFA on important accounts.",
  "Verify suspicious links through a trusted source.",
  "Keep operating systems and apps updated.",
- "Use unique passwords with a password m
+ "Use unique passwords with a password manager.",
+ "Review security logs when investigating an incident.",
+ "Follow least privilege when assigning access."
+ ];
+
+ const e=document.getElementById("tip");
+
+ e.textContent=
+   "💡 "+tips[Math.floor(Math.random()*tips.length)];
+
+ e.classList.remove("hidden");
+}
+
+function lab(type){
+ const text={
+ network:
+ "Network Lab: Identify a private IP, a public IP, a port and a protocol. Example learning question: HTTPS normally uses TCP port 443.",
+
+ linux:
+ "Linux Lab: Practice recognizing safe commands such as pwd, ls, cd and cat. Do not run commands on systems you do not own or have permission to test.",
+
+ phishing:
+ "Phishing Lab: Check sender address, unexpected urgency, domain spelling and whether the link destination is trustworthy.",
+
+ detection:
+ "Detection Lab: A login from an unusual location can be a signal to investigate. Check context, logs and authentication events.",
+
+ ctf:
+ "Mini CTF: Which control reduces account takeover risk most directly? Answer: MFA."
+ }[type];
+
+ const e=document.getElementById("labOutput");
+
+ e.textContent="🧪 "+text;
+ e.classList.remove("hidden");
+}
+
+function startQuiz(){
+ quizIndex=0;
+ quizScore=0;
+ showQuestion();
+}
+
+function showQuestion(){
+ if(quizIndex>=questions.length){
+   finishQuiz();
+   return;
+ }
+
+ const q=questions[quizIndex];
+
+ document.getElementById("quizArea").innerHTML=`
+ <div class="small">
+ Question ${quizIndex+1} / ${questions.length}
+ </div>
+
+ <div class="quizQ">${q[0]}</div>
+
+ ${q[2].map((o,i)=>
+   `<button class="option"
+    onclick="answerQuiz(${i})">${o}</button>`
+ ).join("")}
+
+ <p class="small">Score: ${quizScore}</p>`;
+}
+
+function answerQuiz(i){
+ const q=questions[quizIndex];
+
+ if(q[2][i]===q[1])
+   quizScore++;
+
+ quizIndex++;
+ showQuestion();
+}
+
+function finishQuiz(){
+ const xp=quizScore*10;
+
+ if(quizScore>state.quizBest)
+   state.quizBest=quizScore;
+
+ document.getElementById("quizArea").innerHTML=`
+ <h3>Quiz complete 🎉</h3>
+ <p>You scored <b>${quizScore}/${questions.length}</b>.</p>
+ <p class="muted">
+ Best score this session:
+ ${state.quizBest}/${questions.length}
+ </p>
+ <button class="btn primary" onclick="startQuiz()">
+ Try Again
+ </button>`;
+
+ if(state.user&&xp){
+   const newXp=(state.profile.xp||0)+xp;
+
+   state.profile.xp=newXp;
+   state.profile.level=
+     Math.floor(newXp/100)+1;
+
+   sb.from("profiles")
+     .update({
+       xp:newXp,
+       level:state.profile.level
+     })
+     .eq("user_id",state.user.id);
+
+   render();
+ }
+}
+
+startQuiz();
+
+function saveNotes(){
+ state.notes=document.getElementById("notes").value;
+
+ localStorage.setItem(
+   "cyberNotes",
+   state.notes
+ );
+
+ document.getElementById("noteStatus").textContent=
+   "Saved on this device.";
+}
+
+document.getElementById("notes").value=
+ localStorage.getItem("cyberNotes")||"";
+
+function openPremium(){
+ document.getElementById("premium")
+ .scrollIntoView({behavior:"smooth"});
+}
+
+sb.auth.onAuthStateChange((event,session)=>{
+ if(session)
+   setTimeout(()=>loadUser(session.user),0);
+});
+
+(async()=>{
+ const {data}=await sb.auth.getSession();
+
+ if(data.session)
+   await loadUser(data.session.user);
+ else
+   render();
+})();
+</script>
+
+window.openAuth = function () {
+  const box = document.getElementById("authModal");
+  if (box) {
+    box.classList.remove("hidden");
+    box.style.display = "flex";
+  }
+};
+
+window.closeAuth = function () {
+  const box = document.getElementById("authModal");
+  if (box) {
+    box.classList.add("hidden");
+    box.style.display = "none";
+  }
+};
+
+window.cyberSB = window.cyberSB || null;
+
+try {
+  if (
+    window.supabase &&
+    typeof window.supabase.createClient === "function"
+  ) {
+    const url = "https://ipgrulvyaqxnbhiotgry.supabase.co";
+    const key = "sb_publishable_0t7PIpiFqpxy5RKP2WOiew_nQMFM-uf";
+
+
+    if (!window.cyberSB) {
+      window.cyberSB = window.supabase.createClient(url, key);
+    }
+  }
+} catch (e) {
+  console.log("Supabase:", e);
+}
+
+window.signUp = async function () {
+  const name = document.getElementById("authName").value.trim();
+  const email = document.getElementById("authEmail").value.trim();
+  const password = document.getElementById("authPassword").value;
+
+  const out = document.getElementById("authMsg");
+
+  if (!name || !email || password.length < 8) {
+    out.textContent = "Name, email aur 8+ character password bharna hai.";
+    out.className = "error";
+    return;
+  }
+
+  if (!window.cyberSB) {
+    out.textContent = "Supabase connection load nahi hua.";
+    out.className = "error";
+    return;
+  }
+
+  out.textContent = "Account create ho raha hai...";
+
+  const { error } = await window.cyberSB.auth.signUp({
+    email: email,
+    password: password,
+    options: {
+      data: { name: name }
+    }
+  });
+
+  if (error) {
+    out.textContent = error.message;
+    out.className = "error";
+    return;
+  }
+
+  out.textContent =
+    "Account ban gaya. Email check karke confirmation karo.";
+  out.className = "success";
+};
+
+window.signIn = async function () {
+  const email = document.getElementById("authEmail").value.trim();
+  const password = document.getElementById("authPassword").value;
+  const out = document.getElementById("authMsg");
+
+  if (!email || !password) {
+    out.textContent = "Email aur password bharna hai.";
+    out.className = "error";
+    return;
+  }
+
+  if (!window.cyberSB) {
+    out.textContent = "Supabase connection load nahi hua.";
+    out.className = "error";
+    return;
+  }
+
+  out.textContent = "Login ho raha hai...";
+
+  const { data, error } =
+    await window.cyberSB.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+  if (error) {
+    out.textContent = error.message;
+    out.className = "error";
+    return;
+  }
+
+  out.textContent = "Login successful ✅";
+  out.className = "success";
+
+  setTimeout(() => {
+    closeAuth();
+    location.reload();
+  }, 800);
+};
+
+window.logout = async function () {
+  if (window.cyberSB) {
+    await window.cyberSB.auth.signOut();
+  }
+  location.reload();
+};
+</script>
+</body>
+</html>
