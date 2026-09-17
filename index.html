@@ -479,31 +479,50 @@ function searchAll(){
 }
 
 async function completeCourse(id){
- if(state.completed.includes(id))
-   return;
+  if(state.completed.includes(id))
+    return;
 
- if(!state.user){
-   openAuth();
-   return;
- }
+  if(!state.user){
+    openAuth();
+    return;
+  }
 
- state.completed.push(id);
+  state.completed.push(id);
 
- const xp=(state.profile.xp||0)+50;
- const level=Math.floor(xp/100)+1;
+  const xp=(state.profile.xp||0)+50;
+  const level=Math.floor(xp/100)+1;
 
- state.profile.xp=xp;
- state.profile.level=level;
+  state.profile.xp=xp;
+  state.profile.level=level;
 
- const {error}=await sb
-   .from("profiles")
-   .update({xp,level})
-   .eq("user_id",state.user.id);
+  const {error:profileError}=await sb
+    .from("profiles")
+    .update({xp,level})
+    .eq("user_id",state.user.id);
 
- if(error)
-   alert(error.message);
+  if(profileError){
+    alert(profileError.message);
+    return;
+  }
 
- render();
+  const {error:progressError}=await sb
+    .from("user_progress")
+    .upsert({
+      user_id:state.user.id,
+      course_id:String(id),
+      progress:100,
+      completed:true,
+      updated_at:new Date().toISOString()
+    },{
+      onConflict:"user_id,course_id"
+    });
+
+  if(progressError){
+    alert(progressError.message);
+    return;
+  }
+
+  render();
 }
 
 function randomTip(){
