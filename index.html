@@ -2,133 +2,433 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cyber Security Hub V6</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Security Hub V6 Pro</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
-:root{
- --bg:#050807;--panel:#0a120d;--panel2:#0d1911;
- --text:#eaffea;--muted:#91a296;--green:#19ff75;
- --border:#1b4b2c;--danger:#ff6262;--yellow:#ffd85c;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
 }
-body.light{
- --bg:#eef7f0;--panel:#fff;--panel2:#e4f1e7;
- --text:#102016;--muted:#52635a;--border:#a9cdb3;
-}
-body{
- font-family:Arial,sans-serif;background:var(--bg);color:var(--text);
- line-height:1.6;transition:.3s;
-}
-header{
- position:sticky;top:0;z-index:999;background:rgba(5,8,7,.95);
- border-bottom:1px solid var(--green);padding:15px 5%;
-}
-body.light header{background:rgba(255,255,255,.95)}
-.logo{font-size:24px;font-weight:bold;color:var(--green)}
-.tag{font-size:12px;color:var(--muted)}
-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-nav a,.navbtn{
- color:var(--text);text-decoration:none;border:0;background:transparent;
- padding:7px 9px;cursor:pointer;font-size:13px;border-radius:6px;
-}
-nav a:hover,.navbtn:hover{background:var(--green);color:#031008}
-section{padding:60px 5%}
-.container{max-width:1150px;margin:auto}
-.hero{
- min-height:520px;text-align:center;display:flex;flex-direction:column;
- justify-content:center;align-items:center;
- background:radial-gradient(circle,#123d24 0%,var(--bg) 60%);
-}
-.hero h1{font-size:45px;color:var(--green);margin-bottom:12px}
-.hero p{max-width:700px;color:var(--muted);margin-bottom:25px}
-.btn{
- background:var(--green);color:#031008;border:0;padding:11px 18px;
- border-radius:7px;font-weight:bold;cursor:pointer;
-}
-.btn:hover{opacity:.85}
-.title{text-align:center;color:var(--green);font-size:30px;margin-bottom:30px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card,.panel{
- background:var(--panel);border:1px solid var(--border);
- border-radius:12px;padding:20px;
-}
-.card{transition:.25s}
-.card:hover{transform:translateY(-4px);border-color:var(--green)}
-.card h3{color:var(--green);margin-bottom:8px}
-.muted{color:var(--muted);font-size:14px}
-.icon{font-size:28px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:35px}
-.stat{text-align:center;padding:18px;background:var(--panel);border:1px solid var(--border);border-radius:10px}
-.stat strong{display:block;font-size:27px;color:var(--green)}
-.progress{
- height:12px;background:#162219;border-radius:20px;overflow:hidden;margin:8px 0 14px
-}
-body.light .progress{background:#d3e4d7}
-.bar{height:100%;width:0;background:var(--green);transition:.5s}
-.search{
- width:100%;padding:13px;border-radius:8px;border:1px solid var(--border);
- background:var(--panel);color:var(--text);margin-bottom:18px;
-}
-.lesson{margin-top:20px;display:none}
-.lesson ul{padding-left:20px}
-.lesson li{margin:7px 0}
-.badges{display:flex;flex-wrap:wrap;gap:12px}
-.badge{
- padding:14px;border:1px solid var(--border);border-radius:10px;
- background:var(--panel2);min-width:130px;text-align:center;
-}
-.badge.locked{opacity:.35;filter:grayscale(1)}
-.xp{font-size:30px;color:var(--yellow);font-weight:bold}
-.tool input,.tool textarea{
- width:100%;padding:11px;margin:8px 0;border-radius:7px;
- border:1px solid var(--border);background:var(--bg);color:var(--text)
-}
-.result{
- margin-top:10px;padding:12px;border-radius:7px;background:var(--panel2);
- word-break:break-word;
-}
-.quiz{max-width:750px;margin:auto}
-.option{
- width:100%;text-align:left;padding:12px;margin:6px 0;
- border:1px solid var(--border);border-radius:7px;
- background:var(--panel2);color:var(--text);cursor:pointer
-}
-.option:hover{border-color:var(--green)}
-.feedback{font-weight:bold;margin:12px 0}
-.challenge{
- border:1px solid var(--yellow);background:var(--panel);
- border-radius:12px;padding:25px
-}
-.certificate{
- max-width:800px;margin:auto;text-align:center;padding:45px;
- border:3px solid var(--green);background:var(--panel);border-radius:15px
-}
-.certificate h2{font-size:34px;color:var(--green)}
-.certname{font-size:30px;margin:20px;color:var(--text)}
-input,select{outline:none}
-footer{text-align:center;padding:30px;color:var(--muted);border-top:1px solid var(--border)}
-.toast{
- position:fixed;right:18px;bottom:18px;background:var(--green);
- color:#031008;padding:13px 18px;border-radius:8px;font-weight:bold;
- display:none;z-index:2000
-}
-.hide{display:none!important}
 
-@media(max-width:850px){
- .grid{grid-template-columns:repeat(2,1fr)}
- .grid3{grid-template-columns:1fr 1fr}
- .stats{grid-template-columns:1fr 1fr}
+:root{
+  --bg:#050807;
+  --card:#0b1210;
+  --card2:#101a17;
+  --text:#eafff4;
+  --muted:#91a99d;
+  --green:#00ff88;
+  --green2:#00c96b;
+  --border:#18352a;
+  --danger:#ff4d6d;
+  --yellow:#ffd166;
 }
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  transition:.3s;
+}
+
+body.light{
+  --bg:#eef8f2;
+  --card:#ffffff;
+  --card2:#e4f3ea;
+  --text:#102218;
+  --muted:#52665a;
+  --border:#bddbc8;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(5,8,7,.94);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+
+body.light header{
+  background:rgba(255,255,255,.94);
+}
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+.logo{
+  font-size:21px;
+  font-weight:bold;
+  color:var(--green);
+  white-space:nowrap;
+}
+
+.navlinks{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.navlinks a{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.navlinks a:hover{
+  color:var(--green);
+}
+
+.themeBtn{
+  background:transparent;
+  color:var(--green);
+  border:1px solid var(--green);
+  padding:7px 10px;
+  border-radius:8px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:35px 20px;
+}
+
+.hero{
+  min-height:480px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 20px;
+  background:
+    radial-gradient(circle at center,rgba(0,255,136,.12),transparent 45%);
+}
+
+.hero h1{
+  font-size:clamp(36px,7vw,72px);
+  color:var(--green);
+  text-shadow:0 0 25px rgba(0,255,136,.25);
+}
+
+.hero p{
+  color:var(--muted);
+  max-width:700px;
+  margin:15px auto 25px;
+  font-size:18px;
+}
+
+.btn{
+  display:inline-block;
+  padding:12px 20px;
+  border-radius:10px;
+  background:var(--green);
+  color:#001b0e;
+  font-weight:bold;
+  margin:5px;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn.secondary{
+  background:transparent;
+  color:var(--green);
+  border:1px solid var(--green);
+}
+
+.sectionTitle{
+  margin-bottom:20px;
+}
+
+.sectionTitle h2{
+  font-size:30px;
+  color:var(--green);
+}
+
+.sectionTitle p{
+  color:var(--muted);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin:20px 0 45px;
+}
+
+.stat{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:22px;
+  border-radius:15px;
+  text-align:center;
+}
+
+.stat strong{
+  display:block;
+  font-size:28px;
+  color:var(--green);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  border-color:var(--green);
+}
+
+.card h3{
+  color:var(--green);
+  margin-bottom:8px;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.courseTop{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.badge{
+  background:rgba(0,255,136,.1);
+  border:1px solid var(--green);
+  color:var(--green);
+  padding:3px 8px;
+  border-radius:20px;
+  font-size:11px;
+}
+
+.progress{
+  height:9px;
+  background:#18241f;
+  border-radius:10px;
+  overflow:hidden;
+  margin:12px 0;
+}
+
+.progress div{
+  height:100%;
+  background:var(--green);
+}
+
+.search{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  outline:none;
+  margin-bottom:20px;
+}
+
+.panel{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:22px;
+  margin:18px 0;
+}
+
+.panel h3{
+  color:var(--green);
+  margin-bottom:10px;
+}
+
+input,textarea,select{
+  width:100%;
+  padding:12px;
+  margin:7px 0;
+  border-radius:9px;
+  border:1px solid var(--border);
+  background:var(--card2);
+  color:var(--text);
+  outline:none;
+}
+
+textarea{
+  min-height:130px;
+  resize:vertical;
+}
+
+.list{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+
+.listItem{
+  padding:14px;
+  border:1px solid var(--border);
+  background:var(--card2);
+  border-radius:10px;
+}
+
+.quizOption{
+  display:block;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  margin:8px 0;
+  cursor:pointer;
+  background:var(--card2);
+}
+
+.quizOption:hover{
+  border-color:var(--green);
+}
+
+.result{
+  padding:15px;
+  border-radius:10px;
+  margin-top:15px;
+  background:var(--card2);
+}
+
+.success{
+  color:var(--green);
+}
+
+.warning{
+  color:var(--yellow);
+}
+
+.danger{
+  color:var(--danger);
+}
+
+.toolBox{
+  background:var(--card2);
+  padding:15px;
+  border-radius:12px;
+  margin-top:12px;
+}
+
+.meter{
+  height:12px;
+  background:#17221e;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:10px;
+}
+
+.meter div{
+  height:100%;
+  width:0%;
+  background:var(--green);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  padding:12px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+}
+
+th{
+  color:var(--green);
+}
+
+footer{
+  margin-top:50px;
+  border-top:1px solid var(--border);
+  padding:30px 20px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.hidden{
+  display:none!important;
+}
+
+.small{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.tip{
+  border-left:4px solid var(--green);
+  padding:15px;
+  background:var(--card2);
+  border-radius:8px;
+}
+
+.achievement{
+  min-height:120px;
+}
+
+.completed{
+  opacity:.65;
+}
+
+@media(max-width:900px){
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .nav{
+    flex-direction:column;
+  }
+}
+
 @media(max-width:600px){
- section{padding:45px 4%}
- .hero h1{font-size:31px}
- .grid,.grid3,.stats{grid-template-columns:1fr}
- .logo{font-size:20px}
- nav{gap:3px}
- nav a,.navbtn{font-size:12px;padding:6px}
- .certificate{padding:25px 15px}
+  .grid{
+    grid-template-columns:1fr;
+  }
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+  .navlinks{
+    gap:9px;
+  }
+  .navlinks a{
+    font-size:12px;
+  }
+  .hero{
+    min-height:420px;
+  }
 }
 </style>
 </head>
@@ -136,701 +436,825 @@ footer{text-align:center;padding:30px;color:var(--muted);border-top:1px solid va
 <body>
 
 <header>
-<div class="logo">🛡️ CYBER SECURITY HUB <small>V6</small></div>
-<div class="tag">Learn • Practice • Defend • Secure</div>
+<div class="nav">
 
-<nav>
+<div class="logo">🛡️ CYBER HUB</div>
+
+<div class="navlinks">
 <a href="#home">Home</a>
-<a href="#dashboard">Dashboard</a>
 <a href="#courses">Courses</a>
 <a href="#labs">Labs</a>
 <a href="#quiz">Quiz</a>
-<a href="#challenge">Challenge</a>
-<a href="#tools">Tools</a>
-<a href="#achievements">Badges</a>
-<a href="#certificate">Certificate</a>
-<button class="navbtn" onclick="toggleTheme()">🌙 Theme</button>
-</nav>
+<a href="#dashboard">Dashboard</a>
+<a href="#planner">Planner</a>
+<a href="#notes">Notes</a>
+<a href="#resources">Resources</a>
+</div>
+
+<button class="themeBtn" onclick="toggleTheme()">🌙 / ☀️</button>
+
+</div>
 </header>
 
-<!-- HOME -->
-<section id="home" class="hero">
-<h1>Cyber Security Hub 🚀</h1>
+<section class="hero" id="home">
+<div>
+<h1>Cyber Security Hub</h1>
 <p>
-A complete educational cybersecurity platform for learning
-networking, Linux, web security, defense and security awareness.
+Learn cybersecurity fundamentals through safe labs, quizzes,
+simulations and practical defensive exercises.
 </p>
-<a href="#courses" class="btn">EXPLORE COURSES</a>
 
-<div class="stats container">
-<div class="stat"><strong id="homeXP">0</strong>XP</div>
-<div class="stat"><strong id="homeLevel">1</strong>Level</div>
-<div class="stat"><strong id="homeCourses">0</strong>Courses</div>
-<div class="stat"><strong id="homeScore">0/10</strong>Best Quiz</div>
+<input
+class="search"
+id="globalSearch"
+placeholder="🔍 Search courses, labs, resources..."
+oninput="globalSearch(this.value)"
+>
+
+<a class="btn" href="#courses">START LEARNING</a>
+<a class="btn secondary" href="#quiz">TAKE QUIZ</a>
+
+<div class="tip" style="max-width:700px;margin:25px auto 0">
+💡 <strong>Cyber Tip:</strong>
+<span id="randomTip"></span>
+</div>
 </div>
 </section>
 
-<!-- DASHBOARD -->
+<main class="container">
+
 <section id="dashboard">
-<div class="container">
-<h2 class="title">🖥️ Student Dashboard</h2>
+
+<div class="sectionTitle">
+<h2>📊 Student Dashboard</h2>
+<p>Your progress is saved locally in this browser.</p>
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<strong id="studentName">Guest</strong>
+Student
+</div>
+
+<div class="stat">
+<strong id="xp">0</strong>
+XP
+</div>
+
+<div class="stat">
+<strong id="level">1</strong>
+Level
+</div>
+
+<div class="stat">
+<strong id="streak">0</strong>
+Day Streak
+</div>
+
+</div>
 
 <div class="panel">
 
-<input id="studentName" class="search"
-placeholder="Enter your student name">
+<h3>👤 Student Profile</h3>
 
-<button class="btn" onclick="saveName()">SAVE PROFILE</button>
+<input id="nameInput" placeholder="Enter your name">
 
-<br><br>
+<button class="btn" onclick="saveName()">Save Name</button>
 
-<div class="grid3">
-
-<div class="card">
-<div class="icon">⭐</div>
-<h3>XP</h3>
-<div class="xp" id="xp">0</div>
-</div>
-
-<div class="card">
-<div class="icon">🎯</div>
-<h3>Level</h3>
-<div class="xp" id="level">1</div>
-</div>
-
-<div class="card">
-<div class="icon">🔥</div>
-<h3>Streak</h3>
-<div class="xp" id="streak">0</div>
-</div>
+<p class="small">
+Certificate unlocks when your best quiz score reaches 7/10.
+</p>
 
 </div>
 
-<br>
+<div class="panel">
 
-<h3>Overall Progress</h3>
+<h3>📈 Overall Progress</h3>
+
 <div class="progress">
-<div id="overallBar" class="bar"></div>
+<div id="overallProgress"></div>
 </div>
 
-<p id="overallText" class="muted">0% completed</p>
+<p id="progressText">0% completed</p>
 
 </div>
-</div>
+
 </section>
 
-<!-- COURSES -->
+
 <section id="courses">
-<div class="container">
-<h2 class="title">📚 Cyber Academy</h2>
 
-<input id="courseSearch" class="search"
-placeholder="🔍 Search courses..."
-oninput="filterCourses()">
-
-<div id="courseGrid" class="grid"></div>
-<div id="lesson" class="panel lesson"></div>
-
+<div class="sectionTitle">
+<h2>📚 Cyber Security Courses</h2>
+<p>Build your fundamentals step by step.</p>
 </div>
+
+<input
+class="search"
+id="courseSearch"
+placeholder="🔍 Search courses..."
+oninput="filterCourses(this.value)"
+>
+
+<div class="grid" id="courseGrid"></div>
+
+<div id="courseDetails"></div>
+
 </section>
 
-<!-- LABS -->
-<section id="labs">
-<div class="container">
-<h2 class="title">🧪 Safe Practice Labs</h2>
 
-<div class="grid3">
+<section id="labs">
+
+<div class="sectionTitle">
+<h2>🧪 Safe Practice Labs</h2>
+<p>Simulation-based cybersecurity learning.</p>
+</div>
+
+<div class="grid">
 
 <div class="card">
 <h3>🌐 Network Simulator</h3>
-<p class="muted">Identify basic networking concepts.</p>
-<br>
-<select id="networkSelect" class="search">
-<option value="ip">IP Address</option>
-<option value="dns">DNS</option>
-<option value="tcp">TCP</option>
-<option value="port">Port</option>
-</select>
-<button class="btn" onclick="networkLab()">CHECK</button>
-<div id="networkResult" class="result"></div>
+<p>Learn basic IP, DNS, TCP and port concepts.</p>
+<button class="btn" onclick="networkLab()">Open Lab</button>
+<div id="networkResult"></div>
 </div>
 
 <div class="card">
 <h3>🐧 Linux Command Lab</h3>
-<p class="muted">Practice recognizing common Linux commands.</p>
-<br>
-<select id="linuxSelect" class="search">
-<option value="ls">ls</option>
-<option value="pwd">pwd</option>
-<option value="cd">cd</option>
-<option value="mkdir">mkdir</option>
-</select>
-<button class="btn" onclick="linuxLab()">EXPLAIN</button>
-<div id="linuxResult" class="result"></div>
+<p>Practice safe Linux command concepts.</p>
+<button class="btn" onclick="linuxLab()">Open Lab</button>
+<div id="linuxResult"></div>
 </div>
 
 <div class="card">
 <h3>🎣 Phishing Awareness</h3>
-<p class="muted">Learn how to spot suspicious messages.</p>
-<br>
-<button class="btn" onclick="phishingLab()">ANALYZE EXAMPLE</button>
-<div id="phishingResult" class="result"></div>
+<p>Identify common phishing warning signs.</p>
+<button class="btn" onclick="phishingLab()">Open Lab</button>
+<div id="phishingResult"></div>
+</div>
+
+<div class="card">
+<h3>🧩 Mini CTF</h3>
+<p>Safe logic-based cybersecurity challenges.</p>
+<button class="btn" onclick="showCTF()">Start CTF</button>
+<div id="ctfResult"></div>
 </div>
 
 </div>
-</div>
+
 </section>
 
-<!-- QUIZ -->
+
 <section id="quiz">
-<div class="container">
-<h2 class="title">🧠 Quiz Arena</h2>
 
-<div class="panel quiz">
-
-<div id="quizStart">
-<p class="muted">
-10 questions • random order • XP rewards
-</p>
-<br>
-<button class="btn" onclick="startQuiz()">START QUIZ</button>
+<div class="sectionTitle">
+<h2>🧠 Quiz Arena</h2>
+<p>10 randomized cybersecurity questions.</p>
 </div>
 
-<div id="quizArea" class="hide">
+<div class="panel">
 
-<p id="qCount" class="muted"></p>
-<h3 id="qText" style="margin:12px 0;color:var(--green)"></h3>
-<div id="options"></div>
-<div id="feedback" class="feedback"></div>
+<div id="quizBox">
 
-<button id="nextBtn" class="btn hide" onclick="nextQ()">
-NEXT
-</button>
+<button class="btn" onclick="startQuiz()">Start Quiz</button>
 
-</div>
-
-<div id="quizResult" class="hide">
-<h2 style="color:var(--green)">🎉 Quiz Complete</h2>
-<br>
-<h3 id="finalScore"></h3>
-<br>
-<button class="btn" onclick="restartQuiz()">PLAY AGAIN</button>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- DAILY CHALLENGE -->
-<section id="challenge">
-<div class="container">
-<h2 class="title">🎯 Daily Cyber Challenge</h2>
-
-<div class="challenge">
-<h3>Today's Challenge</h3>
-<p style="margin:12px 0">
-You receive an email asking you to urgently verify your account
-through an unfamiliar link. What should you do first?
+<p class="small">
+Correct answer = XP reward. Your best score is saved locally.
 </p>
 
-<button class="option" onclick="challengeAnswer(0)">
-A. Click immediately
-</button>
-
-<button class="option" onclick="challengeAnswer(1)">
-B. Verify the sender and link independently
-</button>
-
-<button class="option" onclick="challengeAnswer(2)">
-C. Forward your password
-</button>
-
-<p id="challengeResult" class="feedback"></p>
 </div>
 
 </div>
+
 </section>
 
-<!-- TOOLS -->
-<section id="tools">
-<div class="container">
-<h2 class="title">🛡️ Security Toolkit</h2>
 
-<div class="grid3">
+<section>
 
-<div class="card tool">
-<h3>🔐 Password Strength</h3>
-<input id="password" type="password" placeholder="Test a password">
-<button class="btn" onclick="checkPassword()">CHECK</button>
-<div id="passwordResult" class="result"></div>
+<div class="sectionTitle">
+<h2>🎯 Daily Cyber Mission</h2>
+<p>Complete one small task and earn XP.</p>
 </div>
 
-<div class="card tool">
-<h3>🔤 Base64 Demo</h3>
-<textarea id="baseText" rows="3" placeholder="Enter text"></textarea>
-<button class="btn" onclick="encodeBase()">ENCODE</button>
-<button class="btn" onclick="decodeBase()">DECODE</button>
-<div id="baseResult" class="result"></div>
-</div>
+<div class="panel">
 
-<div class="card tool">
-<h3>🔗 URL Safety Checklist</h3>
-<p class="muted">
-Check HTTPS, domain spelling, unexpected redirects,
-urgent language and suspicious requests before opening a link.
-</p>
-<br>
-<button class="btn" onclick="showURLTips()">SHOW TIPS</button>
-<div id="urlResult" class="result"></div>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- ACHIEVEMENTS -->
-<section id="achievements">
-<div class="container">
-<h2 class="title">🏆 Achievements</h2>
-
-<div class="badges" id="badges"></div>
-
-</div>
-</section>
-
-<!-- CERTIFICATE -->
-<section id="certificate">
-<div class="container">
-<h2 class="title">📜 Certificate</h2>
-
-<div id="certLocked" class="panel" style="text-align:center">
-<p class="muted">
-Enter your name and score at least 7/10 in the Quiz Arena
-to unlock the certificate.
-</p>
-</div>
-
-<div id="cert" class="certificate hide">
-<p>CYBER SECURITY HUB</p>
-<br>
-<h2>Certificate of Completion</h2>
-<p>This certificate is presented to</p>
-
-<div class="certname" id="certName">Student</div>
+<h3>Today's Mission</h3>
 
 <p>
-for completing the Cyber Security Hub educational assessment.
+A website asks for your password through an unexpected email.
+What should you do?
 </p>
 
-<br>
+<button class="btn" onclick="dailyMission(true)">
+Report/verify the message first
+</button>
 
-<p id="certDate"></p>
-<p id="certScore"></p>
+<button class="btn secondary" onclick="dailyMission(false)">
+Send your password
+</button>
 
-<br>
+<div id="missionResult"></div>
 
-<button class="btn" onclick="window.print()">🖨️ PRINT CERTIFICATE</button>
 </div>
 
-</div>
 </section>
 
-<!-- PROFILE RESET -->
+
 <section>
-<div class="container">
-<div class="panel" style="text-align:center">
-<h3 style="color:var(--green)">⚙️ Data Controls</h3>
-<p class="muted">
-Your progress is stored locally in this browser.
-</p>
-<br>
-<button class="btn" onclick="resetData()">RESET LOCAL PROGRESS</button>
+
+<div class="sectionTitle">
+<h2>🛠️ Security Toolkit</h2>
+<p>Simple defensive learning tools.</p>
 </div>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>🔐 Password Strength</h3>
+
+<input
+id="passwordInput"
+type="password"
+placeholder="Enter demo password"
+oninput="checkPassword()"
+>
+
+<div class="meter">
+<div id="passwordMeter"></div>
 </div>
+
+<p id="passwordResult" class="small"></p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🔤 Base64 Demo</h3>
+
+<input id="base64Input" placeholder="Enter text">
+
+<button class="btn" onclick="encodeBase64()">Encode</button>
+<button class="btn secondary" onclick="decodeBase64()">Decode</button>
+
+<p id="base64Result" class="small"></p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🔗 URL Safety</h3>
+
+<button class="btn" onclick="urlChecklist()">Show Checklist</button>
+
+<div id="urlResult"></div>
+
+</div>
+
+</div>
+
 </section>
+
+
+<section id="planner">
+
+<div class="sectionTitle">
+<h2>📅 Study Planner</h2>
+<p>Create your own cybersecurity study tasks.</p>
+</div>
+
+<div class="panel">
+
+<input id="taskInput" placeholder="Example: Study TCP/IP">
+
+<button class="btn" onclick="addTask()">Add Task</button>
+
+<div id="taskList" class="list"></div>
+
+</div>
+
+</section>
+
+
+<section id="notes">
+
+<div class="sectionTitle">
+<h2>📝 Personal Notes</h2>
+<p>Save your learning notes locally.</p>
+</div>
+
+<div class="panel">
+
+<textarea
+id="notesInput"
+placeholder="Write your cybersecurity notes here..."
+></textarea>
+
+<button class="btn" onclick="saveNotes()">Save Notes</button>
+
+<button class="btn secondary" onclick="clearNotes()">Clear Notes</button>
+
+<p id="notesStatus" class="small"></p>
+
+</div>
+
+</section>
+
+
+<section>
+
+<div class="sectionTitle">
+<h2>🔖 Bookmarks</h2>
+<p>Save important course topics for quick access.</p>
+</div>
+
+<div class="panel">
+
+<div id="bookmarkList" class="list"></div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<div class="sectionTitle">
+<h2>📈 Detailed Analytics</h2>
+<p>Your local learning statistics.</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Courses Completed</h3>
+<p id="analyticsCourses">0</p>
+</div>
+
+<div class="card">
+<h3>Quiz Best Score</h3>
+<p id="analyticsQuiz">0/10</p>
+</div>
+
+<div class="card">
+<h3>Total XP</h3>
+<p id="analyticsXP">0</p>
+</div>
+
+<div class="card">
+<h3>Achievements</h3>
+<p id="analyticsBadges">0</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<div class="sectionTitle">
+<h2>🏆 Achievements</h2>
+<p>Unlock badges as you learn.</p>
+</div>
+
+<div class="grid" id="achievements"></div>
+
+</section>
+
+
+<section>
+
+<div class="sectionTitle">
+<h2>🏆 Local Demo Leaderboard</h2>
+<p>This is a browser-only demo, not a real online leaderboard.</p>
+</div>
+
+<div class="panel">
+
+<table>
+<thead>
+<tr>
+<th>Player</th>
+<th>XP</th>
+<th>Level</th>
+</tr>
+</thead>
+
+<tbody id="leaderboard"></tbody>
+</table>
+
+</div>
+
+</section>
+
+
+<section id="resources">
+
+<div class="sectionTitle">
+<h2>📚 Security Resources</h2>
+<p>Useful educational references.</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>🌐 Networking</h3>
+<p>Learn IP addresses, DNS, TCP/IP and ports.</p>
+<button class="btn" onclick="bookmark('Networking Fundamentals')">
+🔖 Bookmark
+</button>
+</div>
+
+<div class="card">
+<h3>🐧 Linux</h3>
+<p>Learn Linux fundamentals and command-line concepts.</p>
+<button class="btn" onclick="bookmark('Linux Fundamentals')">
+🔖 Bookmark
+</button>
+</div>
+
+<div class="card">
+<h3>🔐 Cryptography</h3>
+<p>Understand encryption, hashing and digital security concepts.</p>
+<button class="btn" onclick="bookmark('Cryptography Basics')">
+🔖 Bookmark
+</button>
+</div>
+
+<div class="card">
+<h3>🛡️ Defensive Security</h3>
+<p>Study security awareness, SOC and cyber defense.</p>
+<button class="btn" onclick="bookmark('Defensive Security')">
+🔖 Bookmark
+</button>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<div class="sectionTitle">
+<h2>📜 Certificate</h2>
+<p>Educational achievement certificate.</p>
+</div>
+
+<div class="panel" id="certificateBox"></div>
+
+</section>
+
+
+<section>
+
+<div class="sectionTitle">
+<h2>⚙️ Settings</h2>
+</div>
+
+<div class="panel">
+
+<button class="btn secondary" onclick="resetProgress()">
+Reset Local Progress
+</button>
+
+<p class="small">
+This removes saved progress from this browser only.
+</p>
+
+</div>
+
+</section>
+
+</main>
+
 
 <footer>
-© 2026 Cyber Security Hub V6 • Educational & Defensive Learning
+
+<p>🛡️ Cyber Security Hub V6 Pro</p>
+
+<p class="small">
+Educational cybersecurity platform • Safe learning • Defensive knowledge
+</p>
+
 </footer>
 
-<div id="toast" class="toast"></div>
 
 <script>
 
-/* =========================
-   DATA
-========================= */
-
 const courses=[
+
 {
- id:"networking",
- icon:"🌐",
- title:"Networking Fundamentals",
- desc:"Learn the foundation of computer networking.",
- lessons:[
- "IP Address and MAC Address",
- "TCP/IP model",
- "DNS and domain names",
- "Ports and protocols",
- "Routers, switches and firewalls"
- ]
+id:1,
+title:"Networking Fundamentals",
+desc:"Understand how networks communicate.",
+topics:["IP Address","DNS","TCP/IP","Ports","Protocols"]
 },
+
 {
- id:"linux",
- icon:"🐧",
- title:"Linux Fundamentals",
- desc:"Understand Linux basics used in security environments.",
- lessons:[
- "Linux filesystem",
- "Terminal basics",
- "Users and groups",
- "File permissions",
- "Processes and services"
- ]
+id:2,
+title:"Linux Fundamentals",
+desc:"Learn Linux concepts and command line basics.",
+topics:["Filesystem","Permissions","Processes","Commands","Users"]
 },
+
 {
- id:"web",
- icon:"🌍",
- title:"Web Security",
- desc:"Learn common web security concepts and defenses.",
- lessons:[
- "HTTP and HTTPS",
- "Authentication",
- "Sessions and cookies",
- "XSS concepts",
- "Security headers"
- ]
+id:3,
+title:"Web Security",
+desc:"Learn common web security concepts.",
+topics:["HTTPS","Sessions","Authentication","Input Validation","OWASP Concepts"]
 },
+
 {
- id:"defense",
- icon:"🛡️",
- title:"Cyber Defense",
- desc:"Learn practical defensive security principles.",
- lessons:[
- "Security monitoring",
- "Backups",
- "Patch management",
- "MFA",
- "Incident response"
- ]
+id:4,
+title:"Cyber Defense",
+desc:"Learn defensive cybersecurity.",
+topics:["Firewalls","Monitoring","Backups","Incident Response","Logging"]
 },
+
 {
- id:"crypto",
- icon:"🔐",
- title:"Cryptography Basics",
- desc:"Understand encryption, hashing and digital signatures.",
- lessons:[
- "Encryption vs hashing",
- "Symmetric encryption",
- "Asymmetric encryption",
- "Digital signatures",
- "Certificates"
- ]
+id:5,
+title:"Cryptography Basics",
+desc:"Understand fundamental cryptography concepts.",
+topics:["Encryption","Hashing","Keys","Digital Signatures","Certificates"]
 },
+
 {
- id:"soc",
- icon:"📊",
- title:"SOC Fundamentals",
- desc:"Introduction to Security Operations Centers.",
- lessons:[
- "Security logs",
- "Alerts",
- "Indicators of compromise",
- "Triage",
- "Incident documentation"
- ]
+id:6,
+title:"SOC Fundamentals",
+desc:"Understand Security Operations Centers.",
+topics:["Alerts","Logs","SIEM","Threat Detection","Incident Handling"]
 },
+
 {
- id:"awareness",
- icon:"🎣",
- title:"Security Awareness",
- desc:"Protect yourself from common social engineering threats.",
- lessons:[
- "Phishing",
- "Social engineering",
- "Malware awareness",
- "Safe browsing",
- "Account protection"
- ]
+id:7,
+title:"Security Awareness",
+desc:"Learn how humans can reduce cyber risk.",
+topics:["Phishing","Passwords","MFA","Social Engineering","Safe Browsing"]
 },
+
 {
- id:"cloud",
- icon:"☁️",
- title:"Cloud Security Basics",
- desc:"Learn fundamental cloud security concepts.",
- lessons:[
- "Cloud shared responsibility",
- "Identity and access",
- "Data protection",
- "Logging",
- "Secure configuration"
- ]
+id:8,
+title:"Cloud Security Basics",
+desc:"Understand basic cloud security concepts.",
+topics:["IAM","Cloud Storage","Access Control","Monitoring","Shared Responsibility"]
 }
+
 ];
+
 
 const questions=[
-["What does IP stand for?",["Internet Protocol","Internal Program","Internet Process","Input Protocol"],0],
-["Which protocol provides encrypted web traffic?",["HTTP","HTTPS","FTP","SMTP"],1],
-["What is phishing?",["A backup","Social engineering attack","A firewall","An OS"],1],
-["Which improves account security?",["Reuse passwords","Disable MFA","Use MFA","Share passwords"],2],
-["What does DNS mainly help with?",["Domain name resolution","Screen brightness","File compression","Battery charging"],0],
-["What is hashing commonly used for?",["One-way data transformation","Making monitors brighter","Sending email","Routing cables"],0],
-["What is MFA?",["Multiple Factor Authentication","Manual File Access","Main Firewall Application","Mail Forwarding Access"],0],
-["What is a firewall?",["A network security control","A password manager","A browser","A text editor"],0],
-["Which is a defensive practice?",["Regular updates","Sharing credentials","Ignoring alerts","Disabling backups"],0],
-["HTTPS commonly uses what to protect traffic?",["Encryption","Plain text","No protocol","File deletion"],0]
+
+{
+q:"What does DNS primarily do?",
+a:["Translates domain names to IP addresses","Encrypts passwords","Blocks malware","Creates backups"],
+c:0
+},
+
+{
+q:"Which protocol is commonly used for secure web browsing?",
+a:["HTTP","FTP","HTTPS","Telnet"],
+c:2
+},
+
+{
+q:"What is a strong password generally expected to have?",
+a:["Only numbers","Length and variety of characters","Your name","Your birthday"],
+c:1
+},
+
+{
+q:"What does MFA add?",
+a:["An extra verification factor","More bandwidth","A new IP","A firewall rule"],
+c:0
+},
+
+{
+q:"What is phishing?",
+a:["A backup technique","A social engineering attack","A network cable","A programming language"],
+c:1
+},
+
+{
+q:"What does a firewall help control?",
+a:["Network traffic","Screen brightness","Battery life","Keyboard speed"],
+c:0
+},
+
+{
+q:"What is hashing commonly used for?",
+a:["One-way data representation","Increasing Wi-Fi speed","Creating monitors","Changing IP addresses"],
+c:0
+},
+
+{
+q:"What is SIEM used for?",
+a:["Security log analysis and monitoring","Photo editing","Gaming","Video streaming"],
+c:0
+},
+
+{
+q:"Which is a safer response to a suspicious email?",
+a:["Click every link","Verify through a trusted channel","Send credentials","Forward passwords"],
+c:1
+},
+
+{
+q:"What does HTTPS help provide?",
+a:["Encrypted communication in transit","Free internet","Extra storage","More CPU"],
+c:0
+}
+
 ];
 
-/* =========================
-   STATE
-========================= */
 
-let data=JSON.parse(localStorage.getItem("cyberV6")||"null")||{
- name:"",
- xp:0,
- streak:0,
- completed:[],
- bestScore:0,
- challengeDone:false,
- theme:"dark"
+const tips=[
+
+"Use MFA whenever it is available.",
+"Never reuse important passwords.",
+"Verify suspicious links before opening them.",
+"Keep operating systems and applications updated.",
+"Back up important data regularly.",
+"Use a password manager for unique passwords.",
+"Do not share OTPs or verification codes.",
+"Check the sender address in suspicious emails.",
+"Least privilege reduces unnecessary access.",
+"Security is a continuous process."
+
+];
+
+
+let data=JSON.parse(localStorage.getItem("cyberV6Pro")) || {
+
+name:"",
+xp:0,
+streak:0,
+completed:[],
+bestScore:0,
+challengeDone:false,
+theme:"dark",
+notes:"",
+tasks:[],
+bookmarks:[],
+badges:[],
+lastMission:"",
+ctfDone:false
+
 };
 
+
 function save(){
- localStorage.setItem("cyberV6",JSON.stringify(data));
+
+localStorage.setItem(
+"cyberV6Pro",
+JSON.stringify(data)
+);
+
+updateUI();
+
 }
 
-function toast(msg){
- const t=document.getElementById("toast");
- t.innerText=msg;
- t.style.display="block";
- setTimeout(()=>t.style.display="none",2200);
+
+function toast(message){
+
+alert(message);
+
 }
 
-/* =========================
-   DASHBOARD
-========================= */
 
 function saveName(){
- const n=document.getElementById("studentName").value.trim();
 
- if(!n){
-  toast("Please enter your name");
-  return;
- }
+const name=document.getElementById("nameInput").value.trim();
 
- data.name=n;
- save();
- updateUI();
- toast("Profile saved ✅");
+if(!name){
+
+toast("Please enter your name.");
+
+return;
+
 }
+
+data.name=name;
+
+save();
+
+toast("Name saved!");
+
+}
+
 
 function getLevel(){
- return Math.floor(data.xp/100)+1;
+
+return Math.floor(data.xp/100)+1;
+
 }
+
 
 function updateUI(){
 
- document.getElementById("studentName").value=data.name;
+document.getElementById("studentName").textContent=
+data.name || "Guest";
 
- document.getElementById("xp").innerText=data.xp;
- document.getElementById("level").innerText=getLevel();
- document.getElementById("streak").innerText=data.streak;
+document.getElementById("xp").textContent=data.xp;
 
- document.getElementById("homeXP").innerText=data.xp;
- document.getElementById("homeLevel").innerText=getLevel();
- document.getElementById("homeCourses").innerText=data.completed.length;
- document.getElementById("homeScore").innerText=data.bestScore+"/10";
+document.getElementById("level").textContent=getLevel();
 
- const percent=Math.round(
-  (data.completed.length/courses.length)*100
- );
+document.getElementById("streak").textContent=data.streak;
 
- document.getElementById("overallBar").style.width=percent+"%";
- document.getElementById("overallText").innerText=
- percent+"% course progress";
+const percent=Math.round(
+(data.completed.length/courses.length)*100
+);
 
- renderCourses();
- renderBadges();
- updateCertificate();
+document.getElementById("overallProgress").style.width=
+percent+"%";
+
+document.getElementById("progressText").textContent=
+percent+"% completed";
+
+document.getElementById("analyticsCourses").textContent=
+data.completed.length;
+
+document.getElementById("analyticsQuiz").textContent=
+data.bestScore+"/10";
+
+document.getElementById("analyticsXP").textContent=
+data.xp;
+
+document.getElementById("analyticsBadges").textContent=
+data.badges.length;
+
+document.getElementById("nameInput").value=data.name;
+
+document.getElementById("notesInput").value=data.notes;
+
+renderTasks();
+
+renderBookmarks();
+
+renderAchievements();
+
+renderLeaderboard();
+
+renderCertificate();
+
 }
 
-/* =========================
-   COURSES
-========================= */
 
-function renderCourses(filter=""){
+function renderCourses(list=courses){
 
- const grid=document.getElementById("courseGrid");
+const grid=document.getElementById("courseGrid");
 
- grid.innerHTML="";
+grid.innerHTML="";
 
- courses
- .filter(c=>
-  c.title.toLowerCase().includes(filter.toLowerCase()) ||
-  c.desc.toLowerCase().includes(filter.toLowerCase())
- )
- .forEach(c=>{
+list.forEach(course=>{
 
-  const done=data.completed.includes(c.id);
+const done=data.completed.includes(course.id);
 
-  const div=document.createElement("div");
-  div.className="card";
+const card=document.createElement("div");
 
-  div.innerHTML=`
-   <div class="icon">${c.icon}</div>
-   <h3>${c.title}</h3>
-   <p class="muted">${c.desc}</p>
-   <p>${done?"✅ Completed":"📘 Not completed"}</p>
-   <br>
-   <button class="btn" onclick="openCourse('${c.id}')">
-   ${done?"REVIEW COURSE":"OPEN COURSE"}
-   </button>
-  `;
+card.className="card "+(done?"completed":"");
 
-  grid.appendChild(div);
- });
+card.innerHTML=`
+
+<div class="courseTop">
+
+<h3>${course.title}</h3>
+
+<span class="badge">
+${done?"DONE":"COURSE"}
+</span>
+
+</div>
+
+<p>${course.desc}</p>
+
+<div class="progress">
+<div style="width:${done?100:0}%"></div>
+</div>
+
+<p>${course.topics.length} topics</p>
+
+<button class="btn" onclick="openCourse(${course.id})">
+${done?"Review":"Learn"}
+</button>
+
+`;
+
+grid.appendChild(card);
+
+});
+
 }
 
-function filterCourses(){
- renderCourses(document.getElementById("courseSearch").value);
-}
 
-function openCourse(id){
+function filterCourses(value){
 
- const c=courses.find(x=>x.id===id);
- const box=document.getElementById("lesson");
+const q=value.toLowerCase();
 
- box.style.display="block";
-
- box.innerHTML=`
- <h2 style="color:var(--green)">
- ${c.icon} ${c.title}
- </h2>
-
- <p class="muted">${c.desc}</p>
-
- <br>
- <h3>Course Topics</h3>
-
- <ul>
- ${c.lessons.map(x=>`<li>📘 ${x}</li>`).join("")}
- </ul>
-
- <br>
-
- <button class="btn" onclick="completeCourse('${c.id}')">
- MARK COURSE COMPLETE
- </button>
- `;
-
- box.scrollIntoView({behavior:"smooth",block:"center"});
-}
-
-function completeCourse(id){
-
- if(data.completed.includes(id)){
-  toast("Course already completed");
-  return;
- }
-
- data.completed.push(id);
- data.xp+=50;
-
- save();
- updateUI();
-
- toast("+50 XP 🎉");
-}
-
-/* =========================
-   QUIZ
-========================= */
-
-let quiz=[];
-let qi=0;
-let qscore=0;
-let qanswered=false;
-
-function startQuiz(){
-
- quiz=[...questions].sort(()=>Math.random()-.5);
- qi=0;
- qscore=0;
- qanswered=false;
-
- document.getElementById("quizStart").classList.add("hide");
- document.getElementById("quizResult").classList.add("hide");
- document.getElementById("quizArea").classList.remove("hide");
-
- renderQ();
-}
-
-function renderQ(){
-
- qanswered=false;
-
- const q=quiz[qi];
-
- document.getElementById("qCount").innerText=
- "Question "+(qi+1)+" / "+quiz.length;
-
- document.getElementById("qText").innerText=q[0];
-
- document.getElementById("feedback").innerText="";
-
- document.getElementById("nextBtn").classList.add("hide");
-
- const op=document.getElementById("options");
- op.innerHTML="";
-
- q[1].forEach((text,i)=>{
-
-  const b=document.createElement("button");
-  b.className="option";
-  b.innerText=text;
-  b.onclick=()=>answerQ(i);
-  op.appendChild(b);
-
- });
-}
-
-function answerQ(i){
-
- if(qanswered)return;
- qanswered=true;
-
- const q=quiz[qi];
-
- if(i===q[2]){
-  qscore++;
-  document.getElementById("feedback").innerText="✅ Correct!";
- }else{
-  document.getElementById("feedback").innerText=
-  "❌ Incorrect. Correct answer: "+q[1][q[2]];
- }
-
- document.getElementById("nextBtn").classList.remove("hide");
-}
-
-function nextQ(){
-
- qi++;
-
- if(qi<quiz.length){
-  renderQ();
- }else{
-  finishQuiz();
- }
-}
-
-function finishQuiz(){
-
- data.bestScore=Math.max(data.bestScore,qscore);
-
- data.xp+=qscore*10;
-
- save();
- updateUI();
-
- document.getElementById("quizArea").classList.add("hide");
- document.getElementById("quizResult").cla
+renderCourses(
+courses.filter(c=>
+c.title.toLowerCase().includes(q) ||
