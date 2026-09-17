@@ -2,82 +2,540 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cyber Security Hub</title>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="Cyber Security Hub - Learn cybersecurity, networking, Linux, web security and cyber defense.">
+
+<title>Cyber Security Hub - V3</title>
+
 <style>
-*{box-sizing:border-box;scroll-behavior:smooth}
-body{margin:0;background:#050505;color:#00ff66;font-family:monospace}
-header{text-align:center;padding:28px 12px;border-bottom:1px solid #00ff66}
-h1{font-size:clamp(30px,9vw,52px);margin:5px;text-shadow:0 0 12px #00ff66}
-header p{font-size:17px}
-nav{position:sticky;top:0;z-index:10;display:flex;justify-content:center;gap:5px;flex-wrap:wrap;padding:10px;background:#050505;border-bottom:1px solid #00ff66}
-nav a{color:#00ff66;text-decoration:none;padding:9px 10px;font-weight:bold}
-nav a:hover{background:#00ff66;color:#000;border-radius:5px}
-section{padding:45px 15px;text-align:center;max-width:900px;margin:auto}
-.hero{min-height:65vh;display:flex;flex-direction:column;justify-content:center}
-.hero h2{font-size:30px}
-button{background:#00ff66;color:#000;border:0;padding:14px 26px;border-radius:7px;font-weight:bold;font-size:16px;cursor:pointer}
-button:hover{box-shadow:0 0 18px #00ff66}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}
-.card{border:1px solid #00ff66;border-radius:12px;padding:20px;background:#080808}
-.card h3{font-size:20px}
-form{max-width:500px;margin:auto;display:grid;gap:12px}
-input,textarea{width:100%;padding:13px;background:#0b0b0b;color:#00ff66;border:1px solid #00ff66;border-radius:6px;font-family:monospace}
-textarea{min-height:120px}
-#msg{display:none;margin-top:15px}
-footer{text-align:center;padding:25px;border-top:1px solid #00ff66}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#00ff66;
+    font-family:monospace;
+    line-height:1.6;
+}
+
+/* HEADER */
+
+header{
+    text-align:center;
+    padding:45px 15px 35px;
+    border-bottom:1px solid #00ff66;
+}
+
+header h1{
+    font-size:clamp(32px,8vw,65px);
+    text-shadow:0 0 15px #00ff66;
+    letter-spacing:2px;
+}
+
+header p{
+    margin-top:10px;
+    color:#8affad;
+    font-size:clamp(14px,3vw,20px);
+}
+
+/* NAVIGATION */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:#050505;
+    border-bottom:1px solid #00ff66;
+    text-align:center;
+    padding:14px 5px;
+}
+
+nav a{
+    color:#00ff66;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 12px;
+    font-size:14px;
+}
+
+nav a:hover{
+    text-shadow:0 0 10px #00ff66;
+}
+
+/* SECTIONS */
+
+section{
+    max-width:1100px;
+    margin:auto;
+    padding:80px 20px;
+}
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    min-height:650px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.hero h2{
+    font-size:clamp(30px,7vw,55px);
+    max-width:800px;
+    text-shadow:0 0 10px #00ff66;
+}
+
+.hero p{
+    color:#b8ffc9;
+    max-width:700px;
+    margin:25px auto;
+    font-size:16px;
+}
+
+.btn{
+    display:inline-block;
+    background:#00ff66;
+    color:#001b09;
+    border:none;
+    padding:16px 35px;
+    border-radius:8px;
+    font-family:monospace;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration:none;
+    box-shadow:0 0 20px #00ff66;
+}
+
+.btn:hover{
+    transform:scale(1.04);
+}
+
+/* STATS */
+
+.stats{
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:50px;
+}
+
+.stat{
+    border:1px solid #006633;
+    border-radius:10px;
+    padding:25px 10px;
+    text-align:center;
+}
+
+.stat h3{
+    font-size:32px;
+}
+
+.stat p{
+    color:#8affad;
+}
+
+/* SECTION TITLE */
+
+.title{
+    text-align:center;
+    margin-bottom:35px;
+    font-size:28px;
+    text-shadow:0 0 10px #00ff66;
+}
+
+/* COURSES */
+
+.course-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#080808;
+    border:1px solid #008844;
+    border-radius:12px;
+    padding:30px 20px;
+    text-align:center;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#00ff66;
+    box-shadow:0 0 15px #006633;
+}
+
+.card h3{
+    margin-bottom:12px;
+    font-size:20px;
+}
+
+.card p{
+    color:#aaffbd;
+    font-size:14px;
+}
+
+/* LEARN */
+
+.learn-box{
+    background:#080808;
+    border:1px solid #008844;
+    border-radius:12px;
+    padding:30px;
+}
+
+.learn-box ul{
+    list-style:none;
+}
+
+.learn-box li{
+    padding:12px 0;
+    border-bottom:1px solid #12351f;
+    color:#baffc9;
+}
+
+.learn-box li:last-child{
+    border-bottom:none;
+}
+
+/* ABOUT */
+
+.about{
+    text-align:center;
+}
+
+.about p{
+    max-width:750px;
+    margin:auto;
+    color:#baffc9;
+}
+
+/* CONTACT */
+
+form{
+    max-width:600px;
+    margin:auto;
+}
+
+input,
+textarea{
+    width:100%;
+    background:#080808;
+    color:#00ff66;
+    border:1px solid #008844;
+    border-radius:7px;
+    padding:14px;
+    margin-bottom:14px;
+    font-family:monospace;
+    outline:none;
+}
+
+input:focus,
+textarea:focus{
+    border-color:#00ff66;
+    box-shadow:0 0 8px #005522;
+}
+
+textarea{
+    min-height:140px;
+    resize:vertical;
+}
+
+form .btn{
+    width:100%;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    border-top:1px solid #006633;
+    padding:25px 10px;
+    color:#6cff96;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    header{
+        padding:35px 10px 25px;
+    }
+
+    nav{
+        padding:12px 3px;
+    }
+
+    nav a{
+        margin:0 7px;
+        font-size:12px;
+    }
+
+    section{
+        padding:60px 15px;
+    }
+
+    .hero{
+        min-height:580px;
+    }
+
+    .hero h2{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+        gap:10px;
+    }
+
+    .stat{
+        padding:18px;
+    }
+
+    .course-grid{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        padding:25px 15px;
+    }
+
+    .title{
+        font-size:23px;
+    }
+}
+
 </style>
 </head>
+
 <body>
+
+<!-- HEADER -->
+
 <header>
-<h1>CYBER SECURITY</h1>
-<p>Learn • Practice • Secure</p>
+    <h1>CYBER SECURITY</h1>
+    <p>Learn • Practice • Secure</p>
 </header>
 
+<!-- NAVIGATION -->
+
 <nav>
-<a href="#home">Home</a><a href="#courses">Courses</a><a href="#about">About</a><a href="#contact">Contact</a>
+    <a href="#home">Home</a>
+    <a href="#courses">Courses</a>
+    <a href="#learn">Learn</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
 </nav>
 
+<!-- HOME -->
+
 <section id="home" class="hero">
-<h2>Welcome to Cyber Security Hub 👨‍💻</h2>
-<p>Cybersecurity fundamentals और ethical security concepts सीखें।</p>
-<button onclick="document.getElementById('courses').scrollIntoView()">START LEARNING</button>
+
+    <h2>Welcome to Cyber Security Hub 👨‍💻</h2>
+
+    <p>
+        Cybersecurity fundamentals सीखें,
+        ethical security concepts समझें और
+        अपनी digital security skills बनाएँ।
+    </p>
+
+    <a href="#courses" class="btn">
+        START LEARNING 🚀
+    </a>
+
+    <div class="stats">
+
+        <div class="stat">
+            <h3>4+</h3>
+            <p>Courses</p>
+        </div>
+
+        <div class="stat">
+            <h3>20+</h3>
+            <p>Topics</p>
+        </div>
+
+        <div class="stat">
+            <h3>100%</h3>
+            <p>Learning</p>
+        </div>
+
+    </div>
+
 </section>
+
+<!-- COURSES -->
 
 <section id="courses">
-<h2>📚 COURSES</h2>
-<div class="cards">
-<div class="card"><h3>🌐 Networking</h3><p>IP, ports, protocols और network fundamentals.</p></div>
-<div class="card"><h3>🐧 Linux</h3><p>Linux basics और essential commands.</p></div>
-<div class="card"><h3>🔐 Web Security</h3><p>Web security concepts और legal practice labs.</p></div>
-<div class="card"><h3>🛡️ Cyber Defense</h3><p>Systems और websites को सुरक्षित रखने के fundamentals.</p></div>
-</div>
+
+    <h2 class="title">📚 COURSES</h2>
+
+    <div class="course-grid">
+
+        <div class="card">
+            <h3>🌐 Networking</h3>
+            <p>
+                IP, Ports, Protocols और
+                Network Fundamentals सीखें।
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🐧 Linux</h3>
+            <p>
+                Linux basics और essential
+                commands की practice करें।
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🔐 Web Security</h3>
+            <p>
+                Web security concepts और
+                legal practice labs समझें।
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🛡️ Cyber Defense</h3>
+            <p>
+                Systems और websites को
+                सुरक्षित रखने के fundamentals सीखें।
+            </p>
+        </div>
+
+    </div>
+
 </section>
 
-<section id="about">
-<h2>ℹ️ ABOUT</h2>
-<p>यह learning website cybersecurity और ethical security education के लिए बनाई गई है।</p>
+<!-- LEARN -->
+
+<section id="learn">
+
+    <h2 class="title">🎓 WHAT YOU WILL LEARN</h2>
+
+    <div class="learn-box">
+
+        <ul>
+
+            <li>🌐 Networking Fundamentals</li>
+
+            <li>🐧 Linux Basics & Commands</li>
+
+            <li>🔐 Web Security Fundamentals</li>
+
+            <li>🛡️ Cyber Defense Basics</li>
+
+            <li>🔑 Password & Account Security</li>
+
+            <li>📱 Mobile & Digital Security</li>
+
+            <li>🌍 Safe Internet Practices</li>
+
+            <li>⚖️ Ethical & Legal Cybersecurity</li>
+
+        </ul>
+
+    </div>
+
 </section>
+
+<!-- ABOUT -->
+
+<section id="about" class="about">
+
+    <h2 class="title">ℹ️ ABOUT</h2>
+
+    <p>
+        Cyber Security Hub एक educational website है
+        जहाँ cybersecurity, networking, Linux और
+        digital security के fundamentals आसान भाषा में
+        सीखने के लिए resources दिए जाते हैं।
+    </p>
+
+    <br>
+
+    <p>
+        हमारा focus responsible और legal cybersecurity
+        education पर है।
+    </p>
+
+</section>
+
+<!-- CONTACT -->
 
 <section id="contact">
-<h2>📩 CONTACT</h2>
-<form onsubmit="sendMsg(event)">
-<input type="text" placeholder="आपका नाम" required>
-<input type="email" placeholder="Email" required>
-<textarea placeholder="आपका संदेश" required></textarea>
-<button type="submit">SEND MESSAGE</button>
-</form>
-<p id="msg">Message form demo: धन्यवाद! ✅</p>
+
+    <h2 class="title">📩 CONTACT</h2>
+
+    <form onsubmit="sendMessage(event)">
+
+        <input
+            type="text"
+            placeholder="आपका नाम"
+            required
+        >
+
+        <input
+            type="email"
+            placeholder="Email"
+            required
+        >
+
+        <textarea
+            placeholder="आपका संदेश"
+            required
+        ></textarea>
+
+        <button class="btn" type="submit">
+            SEND MESSAGE
+        </button>
+
+    </form>
+
 </section>
 
-<footer>© 2026 Cyber Security Hub</footer>
+<!-- FOOTER -->
+
+<footer>
+    © 2026 Cyber Security Hub
+    <br>
+    Learn • Practice • Secure
+</footer>
 
 <script>
-function sendMsg(e){
- e.preventDefault();
- document.getElementById("msg").style.display="block";
- e.target.reset();
+
+function sendMessage(event){
+
+    event.preventDefault();
+
+    alert(
+        "Message received! धन्यवाद 🙏"
+    );
+
+    event.target.reset();
+
 }
+
 </script>
+
 </body>
 </html>
