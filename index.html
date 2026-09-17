@@ -361,7 +361,26 @@ async function logout(){
  state.profile=null;
  render();
 }
+async function loadProgress(){
+  if(!state.user){
+    state.completed=[];
+    return;
+  }
 
+  const {data,error}=await sb
+    .from("user_progress")
+    .select("course_id,progress,completed")
+    .eq("user_id",state.user.id);
+
+  if(error){
+    console.log("Progress load error:",error);
+    return;
+  }
+
+  state.completed=(data||[])
+    .filter(x=>x.completed || x.progress>=100)
+    .map(x=>Number(x.course_id));
+}
 async function loadUser(user){
  state.user=user;
 
@@ -387,8 +406,9 @@ async function loadUser(user){
 
    if(!ins.error)
      profile=ins.data;
- }
 
+}
+await loadProgress();
  state.profile=profile||{
    name:user.user_metadata?.name||"Student",
    xp:0,
