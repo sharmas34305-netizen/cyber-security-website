@@ -2151,7 +2151,196 @@ document.addEventListener("DOMContentLoaded",()=>{
 });
 
 
+<!-- ===== SUPABASE LOGIN / SIGNUP ===== -->
+<style>
+.authBox{
+  max-width:500px;
+  margin:30px auto;
+  padding:25px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:15px;
+}
+.authBox h2{color:var(--green);margin-bottom:10px}
+.authBox input{margin:7px 0}
+.authMsg{margin-top:10px;color:var(--green)}
+.authUser{margin-top:12px;color:var(--muted)}
+</style>
 
+<section class="section" id="auth">
+  <div class="authBox">
+    <h2>🔐 Account</h2>
+    <p class="muted">Login to save your learning progress securely.</p>
+
+    <input id="authName" placeholder="Your name">
+    <input id="authEmail" type="email" placeholder="Email">
+    <input id="authPassword" type="password" placeholder="Password (8+ characters)">
+
+    <button class="btn" onclick="signUpUser()">Sign Up</button>
+    <button class="btn alt" onclick="loginUser()">Login</button>
+    <button class="btn alt" onclick="logoutUser()">Logout</button>
+
+    <p id="authMsg" class="authMsg"></p>
+    <p id="authUser" class="authUser"></p>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://ipgrulvyaqxnbhiotgry.supabase.co";
+
+/*
+  IMPORTANT:
+  Paste your SUPABASE PUBLISHABLE KEY below.
+  Never paste the secret/service-role key here.
+*/
+const SUPABASE_PUBLISHABLE_KEY = "PASTE_YOUR_PUBLISHABLE_KEY_HERE";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+function authMessage(text){
+  document.getElementById("authMsg").textContent = text;
+}
+
+async function signUpUser(){
+  const name = document.getElementById("authName").value.trim();
+  const email = document.getElementById("authEmail").value.trim();
+  const password = document.getElementById("authPassword").value;
+
+  if(!name || !email || !password){
+    authMessage("Please fill all fields.");
+    return;
+  }
+
+  if(password.length < 8){
+    authMessage("Password must be at least 8 characters.");
+    return;
+  }
+
+  authMessage("Creating account...");
+
+  const { data, error } = await supabaseClient.auth.signUp({
+    email: email,
+    password: password,
+    options:{
+      data:{
+        name:name
+      }
+    }
+  });
+
+  if(error){
+    authMessage(error.message);
+    return;
+  }
+
+  if(data.user){
+    const { error: profileError } = await supabaseClient
+      .from("profiles")
+      .insert({
+        user_id:data.user.id,
+        name:name
+      });
+
+    if(profileError && !profileError.message.includes("duplicate")){
+      console.log(profileError);
+    }
+  }
+
+  authMessage("Account created. Check your email to confirm your account.");
+}
+
+async function loginUser(){
+  const email = document.getElementById("authEmail").value.trim();
+  const password = document.getElementById("authPassword").value;
+
+  if(!email || !password){
+    authMessage("Enter email and password.");
+    return;
+  }
+
+  authMessage("Logging in...");
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email:email,
+    password:password
+  });
+
+  if(error){
+    authMessage(error.message);
+    return;
+  }
+
+  authMessage("Login successful!");
+
+  await loadProfile(data.user);
+}
+
+async function loadProfile(user){
+  const { data, error } = await supabaseClient
+    .from("profiles")
+    .select("*")
+    .eq("user_id", user.id)
+    .maybeSingle();
+
+  if(error){
+    console.log(error);
+    return;
+  }
+
+  if(data){
+    document.getElementById("authUser").textContent =
+      "Logged in as: " + (data.name || user.email);
+
+    const nameElement = document.getElementById("studentName");
+    if(nameElement){
+      nameElement.textContent = data.name || "Student";
+    }
+
+    const xpElement = document.getElementById("xp");
+    if(xpElement){
+      xpElement.textContent = data.xp || 0;
+    }
+
+    const levelElement = document.getElementById("level");
+    if(levelElement){
+      levelElement.textContent = data.level || 1;
+    }
+
+    const streakElement = document.getElementById("streak");
+    if(streakElement){
+      streakElement.textContent = data.streak || 0;
+    }
+  }
+}
+
+async function logoutUser(){
+  const { error } = await supabaseClient.auth.signOut();
+
+  if(error){
+    authMessage(error.message);
+    return;
+  }
+
+  authMessage("Logged out.");
+  document.getElementById("authUser").textContent = "";
+}
+
+async function checkAuth(){
+  const { data } = await supabaseClient.auth.getSession();
+
+  if(data.session){
+    await loadProfile(data.session.user);
+  }
+}
+
+checkAuth();
+</script>
+<!-- ===== END SUPABASE LOGIN / SIGNUP ===== -->
 </script>
 </body>
 </html>
