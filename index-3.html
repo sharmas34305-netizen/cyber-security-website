@@ -1,0 +1,2157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Security Hub V6 Pro Max</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+:root{
+  --bg:#050807;
+  --card:#0b1210;
+  --card2:#101a17;
+  --text:#eafff4;
+  --muted:#91a99d;
+  --green:#00ff88;
+  --border:#18352a;
+  --yellow:#ffd166;
+  --red:#ff5470;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  transition:.3s;
+}
+
+body.light{
+  --bg:#eef8f2;
+  --card:#ffffff;
+  --card2:#e4f3ea;
+  --text:#102218;
+  --muted:#52665a;
+  --border:#bddbc8;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:999;
+  background:rgba(5,8,7,.95);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+
+body.light header{
+  background:rgba(255,255,255,.95);
+}
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.logo{
+  color:var(--green);
+  font-size:20px;
+  font-weight:bold;
+  white-space:nowrap;
+}
+
+.navlinks{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.navlinks a{
+  color:var(--muted);
+  font-size:13px;
+  text-decoration:none;
+}
+
+.navlinks a:hover{
+  color:var(--green);
+}
+
+.themeBtn{
+  background:transparent;
+  color:var(--green);
+  border:1px solid var(--green);
+  border-radius:8px;
+  padding:7px 10px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:35px 18px;
+}
+
+.hero{
+  min-height:470px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 18px;
+  background:
+  radial-gradient(circle at center,
+  rgba(0,255,136,.13),
+  transparent 50%);
+}
+
+.hero h1{
+  color:var(--green);
+  font-size:clamp(38px,8vw,72px);
+  text-shadow:0 0 25px rgba(0,255,136,.25);
+}
+
+.hero p{
+  max-width:750px;
+  margin:15px auto 25px;
+  color:var(--muted);
+  font-size:18px;
+}
+
+.section{
+  margin-bottom:45px;
+}
+
+.section h2{
+  color:var(--green);
+  margin-bottom:7px;
+  font-size:30px;
+}
+
+.muted{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin:20px 0;
+}
+
+.stat{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:20px;
+  text-align:center;
+}
+
+.stat strong{
+  display:block;
+  color:var(--green);
+  font-size:27px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:17px;
+}
+
+.card,
+.panel{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:20px;
+}
+
+.card{
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-3px);
+  border-color:var(--green);
+}
+
+.card h3{
+  color:var(--green);
+  margin-bottom:8px;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.btn{
+  display:inline-block;
+  margin:5px 3px;
+  padding:10px 16px;
+  border:0;
+  border-radius:9px;
+  background:var(--green);
+  color:#001b0e;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn.alt{
+  background:transparent;
+  color:var(--green);
+  border:1px solid var(--green);
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border-radius:9px;
+  border:1px solid var(--border);
+  background:var(--card2);
+  color:var(--text);
+  outline:none;
+}
+
+textarea{
+  min-height:130px;
+  resize:vertical;
+}
+
+.search{
+  margin:18px 0;
+}
+
+.progress{
+  height:9px;
+  background:#17231e;
+  border-radius:20px;
+  overflow:hidden;
+  margin:12px 0;
+}
+
+.progress div{
+  height:100%;
+  background:var(--green);
+}
+
+.badge{
+  display:inline-block;
+  padding:3px 8px;
+  border:1px solid var(--green);
+  color:var(--green);
+  border-radius:20px;
+  font-size:11px;
+}
+
+.item{
+  background:var(--card2);
+  border:1px solid var(--border);
+  padding:13px;
+  border-radius:9px;
+  margin:8px 0;
+}
+
+.option{
+  width:100%;
+  text-align:left;
+  padding:12px;
+  margin:5px 0;
+  background:var(--card2);
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:9px;
+  cursor:pointer;
+}
+
+.option:hover{
+  border-color:var(--green);
+}
+
+.success{
+  color:var(--green);
+}
+
+.warning{
+  color:var(--yellow);
+}
+
+.danger{
+  color:var(--red);
+}
+
+.small{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.tip{
+  max-width:760px;
+  margin:20px auto;
+  padding:14px;
+  border-left:4px solid var(--green);
+  background:var(--card2);
+  border-radius:8px;
+}
+
+.timer{
+  text-align:center;
+  font-size:50px;
+  color:var(--green);
+  margin:10px;
+}
+
+.flash{
+  min-height:150px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-size:23px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,
+td{
+  padding:11px;
+  text-align:left;
+  border-bottom:1px solid var(--border);
+}
+
+th{
+  color:var(--green);
+}
+
+footer{
+  border-top:1px solid var(--border);
+  margin-top:30px;
+  padding:30px;
+  text-align:center;
+  color:var(--muted);
+}
+
+@media(max-width:900px){
+
+.grid{
+  grid-template-columns:repeat(2,1fr);
+}
+
+.stats{
+  grid-template-columns:repeat(2,1fr);
+}
+
+.nav{
+  flex-direction:column;
+}
+
+}
+
+@media(max-width:600px){
+
+.grid{
+  grid-template-columns:1fr;
+}
+
+.navlinks{
+  gap:8px;
+}
+
+.navlinks a{
+  font-size:11px;
+}
+
+.hero{
+  min-height:420px;
+}
+
+.stats{
+  grid-template-columns:1fr 1fr;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="nav">
+
+<div class="logo">
+🛡️ CYBER HUB
+</div>
+
+<div class="navlinks">
+
+<a href="#home">Home</a>
+<a href="#dashboard">Dashboard</a>
+<a href="#courses">Courses</a>
+<a href="#paths">Paths</a>
+<a href="#labs">Labs</a>
+<a href="#quiz">Quiz</a>
+<a href="#tools">Tools</a>
+<a href="#planner">Planner</a>
+<a href="#notes">Notes</a>
+<a href="#badges">Badges</a>
+
+</div>
+
+<button class="themeBtn" onclick="toggleTheme()">
+🌙 / ☀️
+</button>
+
+</div>
+
+</header>
+
+
+<section class="hero" id="home">
+
+<div>
+
+<h1>
+Cyber Security Hub
+</h1>
+
+<p>
+Learn cybersecurity fundamentals through safe simulations,
+defensive labs, quizzes, flashcards and learning tools.
+</p>
+
+<input
+class="search"
+id="globalSearch"
+placeholder="🔍 Search courses and topics..."
+oninput="globalSearch(this.value)"
+>
+
+<a class="btn" href="#courses">
+START LEARNING
+</a>
+
+<a class="btn alt" href="#quiz">
+TAKE QUIZ
+</a>
+
+<div class="tip">
+
+💡 <b>Cyber Tip:</b>
+
+<span id="tip"></span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<main class="container">
+
+
+<section class="section" id="dashboard">
+
+<h2>
+📊 Student Dashboard
+</h2>
+
+<p class="muted">
+Your learning progress is saved locally in this browser.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<strong id="studentName">
+Guest
+</strong>
+Student
+</div>
+
+<div class="stat">
+<strong id="xp">
+0
+</strong>
+XP
+</div>
+
+<div class="stat">
+<strong id="level">
+1
+</strong>
+Level
+</div>
+
+<div class="stat">
+<strong id="streak">
+0
+</strong>
+Streak
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<h3>
+👤 Profile
+</h3>
+
+<input
+id="nameInput"
+placeholder="Enter your name"
+>
+
+<button
+class="btn"
+onclick="saveName()"
+>
+Save Name
+</button>
+
+<p class="small">
+Certificate unlocks after a best quiz score of 7/10.
+</p>
+
+</div>
+
+
+<div class="panel">
+
+<h3>
+📈 Overall Progress
+</h3>
+
+<div class="progress">
+<div id="overallProgress"></div>
+</div>
+
+<p id="progressText">
+0% completed
+</p>
+
+</div>
+
+</section>
+
+
+
+<section class="section" id="courses">
+
+<h2>
+📚 Cyber Security Courses
+</h2>
+
+<p class="muted">
+Build cybersecurity knowledge step by step.
+</p>
+
+<input
+class="search"
+id="courseSearch"
+placeholder="🔍 Search courses..."
+oninput="filterCourses(this.value)"
+>
+
+<div
+class="grid"
+id="courseGrid">
+</div>
+
+<div id="courseDetails">
+</div>
+
+</section>
+
+
+
+<section class="section" id="paths">
+
+<h2>
+🗺️ Learning Paths
+</h2>
+
+<p class="muted">
+Choose a structured learning route.
+</p>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>
+🌱 Beginner
+</h3>
+
+<p>
+Networking → Linux → Security Awareness
+</p>
+
+<button
+class="btn"
+onclick="showPath('Beginner')"
+>
+Open
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🛡️ Intermediate
+</h3>
+
+<p>
+Web Security → Cyber Defense → SOC
+</p>
+
+<button
+class="btn"
+onclick="showPath('Intermediate')"
+>
+Open
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🔐 Advanced Concepts
+</h3>
+
+<p>
+Cryptography → Cloud Security → Scenarios
+</p>
+
+<button
+class="btn"
+onclick="showPath('Advanced')"
+>
+Open
+</button>
+
+</div>
+
+</div>
+
+<div id="pathResult">
+</div>
+
+</section>
+
+
+
+<section class="section" id="labs">
+
+<h2>
+🧪 Safe Security Labs
+</h2>
+
+<p class="muted">
+Simulation-based defensive learning.
+</p>
+
+<div class="grid">
+
+
+<div class="card">
+
+<h3>
+🌐 Network Simulator
+</h3>
+
+<p>
+Learn IP, DNS, TCP and port concepts.
+</p>
+
+<button
+class="btn"
+onclick="networkLab()"
+>
+Open Lab
+</button>
+
+<div id="networkResult">
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🐧 Linux Command Lab
+</h3>
+
+<p>
+Practice safe Linux command concepts.
+</p>
+
+<button
+class="btn"
+onclick="linuxLab()"
+>
+Open Lab
+</button>
+
+<div id="linuxResult">
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🎣 Phishing Awareness
+</h3>
+
+<p>
+Learn how to identify suspicious messages.
+</p>
+
+<button
+class="btn"
+onclick="phishingLab()"
+>
+Open Lab
+</button>
+
+<div id="phishingResult">
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🕵️ Threat Detection
+</h3>
+
+<p>
+Classify simulated security events.
+</p>
+
+<button
+class="btn"
+onclick="threatLab()"
+>
+Start
+</button>
+
+<div id="threatResult">
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🧩 Mini CTF
+</h3>
+
+<p>
+Safe logic-based cybersecurity challenge.
+</p>
+
+<button
+class="btn"
+onclick="startCTF()"
+>
+Start
+</button>
+
+<div id="ctfResult">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="section" id="quiz">
+
+<h2>
+🧠 Quiz Arena
+</h2>
+
+<p class="muted">
+10 randomized cybersecurity questions.
+</p>
+
+<div
+class="panel"
+id="quizBox"
+>
+
+<button
+class="btn"
+onclick="startQuiz()"
+>
+Start Quiz
+</button>
+
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+<h2>
+🔐 Security Scenarios
+</h2>
+
+<p class="muted">
+Choose the safer defensive response.
+</p>
+
+<div
+class="panel"
+id="scenarioBox">
+</div>
+
+</section>
+
+
+
+<section class="section" id="tools">
+
+<h2>
+🛠️ Security Toolkit
+</h2>
+
+<div class="grid">
+
+
+<div class="card">
+
+<h3>
+🔑 Password Strength
+</h3>
+
+<input
+id="password"
+type="password"
+placeholder="Demo password"
+oninput="passwordCheck()"
+>
+
+<div class="progress">
+<div id="passwordBar"></div>
+</div>
+
+<p
+id="passwordText"
+class="small">
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🔤 Base64 Demo
+</h3>
+
+<input
+id="base64Input"
+placeholder="Enter text"
+>
+
+<button
+class="btn"
+onclick="encodeBase64()"
+>
+Encode
+</button>
+
+<button
+class="btn alt"
+onclick="decodeBase64()"
+>
+Decode
+</button>
+
+<p
+id="base64Output"
+class="small">
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🔗 URL Safety
+</h3>
+
+<button
+class="btn"
+onclick="urlChecklist()"
+>
+Show Checklist
+</button>
+
+<div id="urlOutput">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+<h2>
+⚡ Rapid-Fire Quiz
+</h2>
+
+<p class="muted">
+Answer as many safe-learning questions as possible in 30 seconds.
+</p>
+
+<div
+class="panel"
+id="rapidBox">
+
+<button
+class="btn"
+onclick="startRapid()"
+>
+Start 30 Seconds
+</button>
+
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+<h2>
+🧠 Flashcards
+</h2>
+
+<div class="panel">
+
+<div
+class="flash"
+id="flashcard">
+Press "Next Card"
+</div>
+
+<button
+class="btn"
+onclick="nextFlashcard()"
+>
+Next Card
+</button>
+
+<button
+class="btn alt"
+onclick="flipFlashcard()"
+>
+Flip
+</button>
+
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+<h2>
+⏱️ Study Timer
+</h2>
+
+<div class="panel">
+
+<div
+class="timer"
+id="timer">
+25:00
+</div>
+
+<div style="text-align:center">
+
+<button
+class="btn"
+onclick="startTimer()"
+>
+Start
+</button>
+
+<button
+class="btn alt"
+onclick="pauseTimer()"
+>
+Pause
+</button>
+
+<button
+class="btn alt"
+onclick="resetTimer()"
+>
+Reset
+</button>
+
+</div>
+
+<p
+id="timerMessage"
+class="small">
+</p>
+
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+<h2>
+🎯 XP Missions
+</h2>
+
+<div class="grid">
+
+
+<div class="card">
+
+<h3>
+🎯 Daily Mission
+</h3>
+
+<p>
+Identify the safest action when you receive an unexpected login email.
+</p>
+
+<button
+class="btn"
+onclick="dailyMission()"
+>
+Complete
+</button>
+
+<div id="dailyResult">
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+📅 Weekly Goal
+</h3>
+
+<p>
+Complete at least 3 courses.
+</p>
+
+<p
+id="weeklyGoal"
+class="success">
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="section" id="planner">
+
+<h2>
+📅 Study Planner
+</h2>
+
+<div class="panel">
+
+<input
+id="taskInput"
+placeholder="Example: Study TCP/IP"
+>
+
+<button
+class="btn"
+onclick="addTask()"
+>
+Add Task
+</button>
+
+<div
+id="taskList">
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="section" id="notes">
+
+<h2>
+📝 Personal Notes
+</h2>
+
+<div class="panel">
+
+<textarea
+id="notesInput"
+placeholder="Write your cybersecurity notes here..."
+></textarea>
+
+<button
+class="btn"
+onclick="saveNotes()"
+>
+Save Notes
+</button>
+
+<button
+class="btn alt"
+onclick="clearNotes()"
+>
+Clear
+</button>
+
+<p
+id="notesMessage"
+class="small">
+</p>
+
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+<h2>
+🔖 Bookmarks
+</h2>
+
+<div class="panel">
+
+<div id="bookmarkList">
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+<h2>
+📈 Detailed Analytics
+</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Courses Completed</h3>
+<p id="analyticsCourses">0</p>
+</div>
+
+<div class="card">
+<h3>Best Quiz</h3>
+<p id="analyticsQuiz">0/10</p>
+</div>
+
+<div class="card">
+<h3>Total XP</h3>
+<p id="analyticsXP">0</p>
+</div>
+
+<div class="card">
+<h3>Badges</h3>
+<p id="analyticsBadges">0</p>
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="section" id="badges">
+
+<h2>
+🏅 Achievements
+</h2>
+
+<div
+class="grid"
+id="achievementGrid">
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+<h2>
+🏆 Local Demo Leaderboard
+</h2>
+
+<p class="muted">
+This is a local browser demo, not a real online leaderboard.
+</p>
+
+<div class="panel">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Player</th>
+<th>XP</th>
+<th>Level</th>
+</tr>
+
+</thead>
+
+<tbody
+id="leaderboard">
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+<h2>
+📚 Security Resources
+</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>
+🌐 Networking
+</h3>
+
+<p>
+IP, DNS, TCP/IP and ports.
+</p>
+
+<button
+class="btn alt"
+onclick="bookmark('Networking Resources')"
+>
+🔖 Bookmark
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🐧 Linux
+</h3>
+
+<p>
+Linux fundamentals and command-line concepts.
+</p>
+
+<button
+class="btn alt"
+onclick="bookmark('Linux Resources')"
+>
+🔖 Bookmark
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🔐 Cryptography
+</h3>
+
+<p>
+Encryption, hashing and digital security concepts.
+</p>
+
+<button
+class="btn alt"
+onclick="bookmark('Cryptography Resources')"
+>
+🔖 Bookmark
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🛡️ Defensive Security
+</h3>
+
+<p>
+Monitoring, awareness, SOC and defense concepts.
+</p>
+
+<button
+class="btn alt"
+onclick="bookmark('Defensive Security Resources')"
+>
+🔖 Bookmark
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+<h2>
+📜 Certificate
+</h2>
+
+<div
+class="panel"
+id="certificateBox">
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+<h2>
+⚙️ Settings
+</h2>
+
+<div class="panel">
+
+<button
+class="btn alt"
+onclick="resetProgress()"
+>
+Reset Local Progress
+</button>
+
+<p class="small">
+This removes saved progress from this browser only.
+</p>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+🛡️ Cyber Security Hub V6 Pro Max
+
+<br>
+
+<span class="small">
+Educational • Defensive • Safe Cybersecurity Learning
+</span>
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================
+   COURSE DATA
+========================= */
+
+const courses=[
+
+{
+id:1,
+title:"Networking Fundamentals",
+desc:"Understand how networks communicate.",
+topics:[
+"IP Address",
+"DNS",
+"TCP/IP",
+"Ports",
+"Protocols"
+]
+},
+
+{
+id:2,
+title:"Linux Fundamentals",
+desc:"Learn Linux and command-line basics.",
+topics:[
+"Filesystem",
+"Permissions",
+"Processes",
+"Commands",
+"Users"
+]
+},
+
+{
+id:3,
+title:"Web Security",
+desc:"Learn basic web security concepts.",
+topics:[
+"HTTPS",
+"Sessions",
+"Authentication",
+"Input Validation",
+"OWASP Concepts"
+]
+},
+
+{
+id:4,
+title:"Cyber Defense",
+desc:"Learn defensive cybersecurity.",
+topics:[
+"Firewalls",
+"Monitoring",
+"Backups",
+"Incident Response",
+"Logging"
+]
+},
+
+{
+id:5,
+title:"Cryptography Basics",
+desc:"Understand fundamental cryptography.",
+topics:[
+"Encryption",
+"Hashing",
+"Keys",
+"Digital Signatures",
+"Certificates"
+]
+},
+
+{
+id:6,
+title:"SOC Fundamentals",
+desc:"Understand Security Operations Centers.",
+topics:[
+"Alerts",
+"Logs",
+"SIEM",
+"Threat Detection",
+"Incident Handling"
+]
+},
+
+{
+id:7,
+title:"Security Awareness",
+desc:"Reduce human cyber risk.",
+topics:[
+"Phishing",
+"Passwords",
+"MFA",
+"Social Engineering",
+"Safe Browsing"
+]
+},
+
+{
+id:8,
+title:"Cloud Security Basics",
+desc:"Understand basic cloud security.",
+topics:[
+"IAM",
+"Cloud Storage",
+"Access Control",
+"Monitoring",
+"Shared Responsibility"
+]
+}
+
+];
+
+
+/* =========================
+   QUIZ QUESTIONS
+========================= */
+
+const questions=[
+
+{
+q:"What does DNS primarily do?",
+a:[
+"Translate domain names to IP addresses",
+"Encrypt passwords",
+"Block malware",
+"Create backups"
+],
+c:0
+},
+
+{
+q:"Which protocol is commonly used for secure web browsing?",
+a:[
+"HTTP",
+"FTP",
+"HTTPS",
+"Telnet"
+],
+c:2
+},
+
+{
+q:"What makes a password stronger?",
+a:[
+"Only numbers",
+"Length and variety",
+"Your name",
+"Your birthday"
+],
+c:1
+},
+
+{
+q:"What does MFA add?",
+a:[
+"An extra verification factor",
+"More bandwidth",
+"A new IP address",
+"A firewall"
+],
+c:0
+},
+
+{
+q:"What is phishing?",
+a:[
+"A backup technique",
+"A social engineering attack",
+"A network cable",
+"A programming language"
+],
+c:1
+},
+
+{
+q:"What does a firewall help control?",
+a:[
+"Network traffic",
+"Screen brightness",
+"Battery life",
+"Keyboard speed"
+],
+c:0
+},
+
+{
+q:"What is hashing commonly used for?",
+a:[
+"One-way data representation",
+"Increasing Wi-Fi speed",
+"Creating monitors",
+"Changing IP addresses"
+],
+c:0
+},
+
+{
+q:"What is SIEM commonly used for?",
+a:[
+"Security log analysis",
+"Photo editing",
+"Gaming",
+"Video streaming"
+],
+c:0
+},
+
+{
+q:"What should you do with a suspicious email?",
+a:[
+"Click every link",
+"Verify through a trusted channel",
+"Send credentials",
+"Share OTP"
+],
+c:1
+},
+
+{
+q:"What does HTTPS help provide?",
+a:[
+"Encrypted communication in transit",
+"Free internet",
+"Extra storage",
+"More CPU"
+],
+c:0
+}
+
+];
+
+
+/* =========================
+   FLASHCARDS
+========================= */
+
+const flashcards=[
+
+[
+"DNS",
+"DNS translates domain names into IP addresses."
+],
+
+[
+"MFA",
+"MFA adds another verification factor."
+],
+
+[
+"Hashing",
+"Hashing creates a one-way representation of data."
+],
+
+[
+"Least Privilege",
+"Users should receive only the permissions they need."
+],
+
+[
+"SIEM",
+"SIEM helps collect and analyze security logs and events."
+],
+
+[
+"Firewall",
+"A firewall helps control network traffic according to rules."
+],
+
+[
+"Phishing",
+"Phishing attempts to trick users into revealing information."
+],
+
+[
+"HTTPS",
+"HTTPS protects data in transit using TLS."
+]
+
+];
+
+
+/* =========================
+   CYBER TIPS
+========================= */
+
+const tips=[
+
+"Use MFA whenever it is available.",
+
+"Never reuse important passwords.",
+
+"Verify suspicious links before opening them.",
+
+"Keep software updated.",
+
+"Back up important data regularly.",
+
+"Never share OTPs or verification codes.",
+
+"Check the sender address carefully.",
+
+"Use least privilege.",
+
+"Security is a continuous process.",
+
+"Use a password manager for unique passwords."
+
+];
+
+
+/* =========================
+   SAVED DATA
+========================= */
+
+let data=JSON.parse(
+localStorage.getItem("cyberV6Part3")
+)||{
+
+name:"",
+xp:0,
+completed:[],
+bestScore:0,
+streak:0,
+theme:"dark",
+notes:"",
+tasks:[],
+bookmarks:[],
+dailyDone:false,
+ctfDone:false
+
+};
+
+
+/* =========================
+   SAVE
+========================= */
+
+function save(){
+
+localStorage.setItem(
+"cyberV6Part3",
+JSON.stringify(data)
+);
+
+updateUI();
+
+}
+
+
+/* =========================
+   LEVEL
+========================= */
+
+function getLevel(){
+
+return Math.floor(data.xp/100)+1;
+
+}
+
+
+/* =========================
+   SUPABASE AUTH + CLOUD PROFILE
+========================= */
+const SUPABASE_URL = "https://ipgrulvyaqxnbhiotgry.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE";
+let supabaseClient = null;
+let currentUser = null;
+let syncTimer = null;
+
+function setAuthStatus(message, kind=""){
+  const el=document.getElementById("authStatus");
+  if(el){ el.textContent=message; el.className="small "+kind; }
+}
+
+function addAuthUI(){
+  const dashboard=document.getElementById("dashboard");
+  if(!dashboard || document.getElementById("authPanel")) return;
+  const section=document.createElement("div");
+  section.className="panel";
+  section.id="authPanel";
+  section.style.marginBottom="18px";
+  section.innerHTML=`
+    <h3>🔐 Account</h3>
+    <p class="small" id="authState">Not logged in. Your local progress still works.</p>
+    <div id="authForm">
+      <input id="authEmail" type="email" placeholder="Email address" autocomplete="email">
+      <input id="authPassword" type="password" placeholder="Password (8+ characters)" autocomplete="current-password">
+      <button class="btn" onclick="signUp()">Create Account</button>
+      <button class="btn alt" onclick="signIn()">Login</button>
+      <button class="btn alt" onclick="resetPassword()">Forgot Password</button>
+    </div>
+    <div id="authLoggedIn" style="display:none">
+      <p class="small" id="authUserEmail"></p>
+      <button class="btn alt" onclick="signOut()">Logout</button>
+    </div>
+    <p id="authStatus" class="small"></p>
+  `;
+  dashboard.insertBefore(section,dashboard.children[2] || null);
+}
+
+function initSupabase(){
+  addAuthUI();
+  if(SUPABASE_PUBLISHABLE_KEY.includes("PASTE_YOUR_")){
+    setAuthStatus("Add your Supabase Publishable key in this file to enable Login/Signup.","warning");
+    return;
+  }
+  if(!window.supabase){
+    setAuthStatus("Supabase library did not load. Refresh the page.","danger");
+    return;
+  }
+  supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+  supabaseClient.auth.getSession().then(({data})=>{
+    currentUser=data.session?.user || null;
+    updateAuthUI();
+    if(currentUser) loadCloudProfile();
+  });
+  supabaseClient.auth.onAuthStateChange((_event,session)=>{
+    currentUser=session?.user || null;
+    updateAuthUI();
+    if(currentUser) loadCloudProfile();
+  });
+}
+
+function updateAuthUI(){
+  const state=document.getElementById("authState");
+  const form=document.getElementById("authForm");
+  const logged=document.getElementById("authLoggedIn");
+  const email=document.getElementById("authUserEmail");
+  if(!state) return;
+  if(currentUser){
+    state.textContent="Logged in. Profile data can sync with Supabase.";
+    state.className="small success";
+    if(form) form.style.display="none";
+    if(logged) logged.style.display="block";
+    if(email) email.textContent=currentUser.email || "Account";
+  }else{
+    state.textContent="Not logged in. Local browser progress is still available.";
+    state.className="small";
+    if(form) form.style.display="block";
+    if(logged) logged.style.display="none";
+  }
+}
+
+async function signUp(){
+  if(!supabaseClient){ setAuthStatus("First add the Supabase Publishable key in index.html.","warning"); return; }
+  const email=(document.getElementById("authEmail")?.value||"").trim();
+  const password=document.getElementById("authPassword")?.value||"";
+  if(!email || password.length<8){ setAuthStatus("Enter a valid email and an 8+ character password.","warning"); return; }
+  setAuthStatus("Creating account...");
+  const {data:result,error}=await supabaseClient.auth.signUp({email,password});
+  if(error){ setAuthStatus(error.message,"danger"); return; }
+  if(result.session){
+    setAuthStatus("Account created and logged in.","success");
+  }else{
+    setAuthStatus("Account created. Check your email to confirm, then Login.","success");
+  }
+}
+
+async function signIn(){
+  if(!supabaseClient){ setAuthStatus("First add the Supabase Publishable key in index.html.","warning"); return; }
+  const email=(document.getElementById("authEmail")?.value||"").trim();
+  const password=document.getElementById("authPassword")?.value||"";
+  if(!email || !password){ setAuthStatus("Enter your email and password.","warning"); return; }
+  setAuthStatus("Logging in...");
+  const {error}=await supabaseClient.auth.signInWithPassword({email,password});
+  if(error){ setAuthStatus(error.message,"danger"); return; }
+  setAuthStatus("Login successful.","success");
+}
+
+async function signOut(){
+  if(!supabaseClient) return;
+  const {error}=await supabaseClient.auth.signOut();
+  if(error) setAuthStatus(error.message,"danger");
+  else setAuthStatus("Logged out. Local progress remains on this browser.");
+}
+
+async function resetPassword(){
+  if(!supabaseClient){ setAuthStatus("First add the Supabase Publishable key in index.html.","warning"); return; }
+  const email=(document.getElementById("authEmail")?.value||"").trim();
+  if(!email){ setAuthStatus("Enter your email first.","warning"); return; }
+  const redirect=window.location.origin+window.location.pathname;
+  const {error}=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo:redirect});
+  if(error) setAuthStatus(error.message,"danger");
+  else setAuthStatus("Password reset email sent. Check your inbox.","success");
+}
+
+async function loadCloudProfile(){
+  if(!supabaseClient || !currentUser) return;
+  const {data:profile,error}=await supabaseClient.from("profiles").select("name,xp,level,streak,is_premium").eq("user_id",currentUser.id).maybeSingle();
+  if(error){ setAuthStatus("Logged in, but profile sync needs attention: "+error.message,"danger"); return; }
+  if(profile){
+    data.name=profile.name || data.name;
+    data.xp=Number(profile.xp||0);
+    data.streak=Number(profile.streak||0);
+    saveLocalOnly();
+    updateUI();
+    setAuthStatus("Cloud profile loaded.","success");
+  }else{
+    await createCloudProfile();
+  }
+}
+
+async function createCloudProfile(){
+  if(!supabaseClient || !currentUser) return;
+  const payload={user_id:currentUser.id,name:data.name||null,xp:Number(data.xp||0),level:getLevel(),streak:Number(data.streak||0),is_premium:false};
+  const {error}=await supabaseClient.from("profiles").insert(payload);
+  if(error){ setAuthStatus("Could not create cloud profile: "+error.message,"danger"); return; }
+  setAuthStatus("Cloud profile created.","success");
+}
+
+async function syncCloudProfile(){
+  if(!supabaseClient || !currentUser) return;
+  clearTimeout(syncTimer);
+  syncTimer=setTimeout(async()=>{
+    const payload={name:data.name||null,xp:Number(data.xp||0),level:getLevel(),streak:Number(data.streak||0)};
+    const {error}=await supabaseClient.from("profiles").update(payload).eq("user_id",currentUser.id);
+    if(error) setAuthStatus("Local save worked, cloud sync failed: "+error.message,"danger");
+  },500);
+}
+
+function saveLocalOnly(){
+  localStorage.setItem("cyberV6Part3",JSON.stringify(data));
+}
+
+/* =========================
+   ORIGINAL APP FUNCTIONS
+========================= */
+function save(){
+  saveLocalOnly();
+  updateUI();
+  syncCloudProfile();
+}
+
+function getLevel(){ return Math.floor(Number(data.xp||0)/100)+1; }
+
+function updateUI(){
+  const set=(id,val)=>{const e=document.getElementById(id);if(e)e.textContent=val;};
+  set("studentName",data.name||"Guest");
+  set("xp",data.xp||0);
+  set("level",getLevel());
+  set("streak",data.streak||0);
+  const nameInput=document.getElementById("nameInput"); if(nameInput && document.activeElement!==nameInput) nameInput.value=data.name||"";
+  const progress=Math.round(((data.completed||[]).length/courses.length)*100);
+  const bar=document.getElementById("overallProgress"); if(bar) bar.style.width=progress+"%";
+  set("progressText",progress+"% completed");
+  set("analyticsCourses",(data.completed||[]).length);
+  set("analyticsQuiz",(data.bestScore||0)+"/10");
+  set("analyticsXP",data.xp||0);
+  set("analyticsBadges",countBadges());
+  const wg=document.getElementById("weeklyGoal"); if(wg) wg.textContent=(data.completed||[]).length>=3?"Goal reached!":"Complete "+Math.max(0,3-(data.completed||[]).length)+" more course(s).";
+  renderTasks(); renderBookmarks(); renderAchievements(); renderCertificate(); renderLeaderboard();
+}
+
+function saveName(){
+  const v=(document.getElementById("nameInput")?.value||"").trim();
+  data.name=v.slice(0,60); save();
+}
+
+function toggleTheme(){
+  data.theme=data.theme==="light"?"dark":"light";
+  document.body.classList.toggle("light",data.theme==="light");
+  save();
+}
+
+function globalSearch(q){
+  q=(q||"").toLowerCase().trim();
+  if(!q) return;
+  const match=courses.find(c=>(c.title+" "+c.desc+" "+c.topics.join(" ")).toLowerCase().includes(q));
+  if(match){ document.getElementById("courseSearch").value=q; filterCourses(q); document.getElementById("courses").scrollIntoView({behavior:"smooth"}); }
+}
+
+function renderCourses(list=courses){
+  const grid=document.getElementById("courseGrid"); if(!grid)return;
+  grid.innerHTML=list.map(c=>{
+    const done=data.completed.includes(c.id);
+    return `<div class="card"><span class="badge">${done?"Completed":"Course"}</span><h3>${escapeHtml(c.title)}</h3><p>${escapeHtml(c.desc)}</p><button class="btn" onclick="openCourse(${c.id})">${done?"Review":"Open Course"}</button></div>`;
+  }).join("") || `<div class="card"><p>No courses found.</p></div>`;
+}
+
+function filterCourses(q){
+  q=(q||"").toLowerCase().trim();
+  renderCourses(courses.filter(c=>(c.title+" "+c.desc+" "+c.topics.join(" ")).toLowerCase().includes(q)));
+}
+
+function openCourse(id){
+  const c=courses.find(x=>x.id===id); if(!c)return;
+  const box=document.getElementById("courseDetails");
+  box.innerHTML=`<div class="panel"><h3>📘 ${escapeHtml(c.title)}</h3><p class="small">${escapeHtml(c.desc)}</p><ul>${c.topics.map(t=>`<li>${escapeHtml(t)}</li>`).join("")}</ul><button class="btn" onclick="completeCourse(${id})">${data.completed.includes(id)?"Completed ✓":"Mark Complete +50 XP"}</button><button class="btn alt" onclick="bookmark('${escapeJs(c.title)}')">🔖 Bookmark</button></div>`;
+  box.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+function completeCourse(id){
+  if(!data.completed.includes(id)){ data.completed.push(id); data.xp+=50; data.streak=Math.max(1,data.streak||0); save(); }
+  openCourse(id);
+}
+
+function showPath(name){
+  const paths={Beginner:["Networking Fundamentals","Linux Fundamentals","Security Awareness"],Intermediate:["Web Security","Cyber Defense","SOC Fundamentals"],Advanced:["Cryptography Basics","Cloud Security Basics","Security Scenarios"]};
+  document.getElementById("pathResult").innerHTML=`<div class="panel"><h3>${escapeHtml(name)} Path</h3><p>${paths[name].map(escapeHtml).join(" → ")}</p></div>`;
+}
+
+function networkLab(){ document.getElementById("networkResult").innerHTML=`<div class="item"><b>Simulation:</b> A device resolves a domain through DNS, establishes a TCP connection, then communicates over an application protocol. No real network traffic is generated.</div>`; }
+function linuxLab(){ document.getElementById("linuxResult").innerHTML=`<div class="item"><b>Safe practice:</b> <code>pwd</code> shows the current directory, <code>ls</code> lists files, and <code>whoami</code> shows the current user.</div>`; }
+function phishingLab(){ document.getElementById("phishingResult").innerHTML=`<div class="item"><b>Checklist:</b> verify sender, inspect links, avoid unexpected attachments, and use a trusted channel before entering credentials.</div>`; }
+function threatLab(){
+  const events=["Multiple failed logins","Routine software update","Unexpected admin login","Known backup completed"];
+  const e=events[Math.floor(Math.random()*events.length)];
+  const suspicious=["Multiple failed logins","Unexpected admin login"].includes(e);
+  document.getElementById("threatResult").innerHTML=`<div class="item"><b>Event:</b> ${e}<br><span class="${suspicious?"warning":"success"}">${suspicious?"Review and investigate":"Likely routine activity"}</span></div>`;
+}
+function startCTF(){
+  const qs=[{q:"Which control adds another verification factor?",a:"MFA"},{q:"Which service commonly analyzes security logs?",a:"SIEM"},{q:"What should you do with a suspicious link?",a:"Verify it"}];
+  const x=qs[Math.floor(Math.random()*qs.length)];
+  document.getElementById("ctfResult").innerHTML=`<div class="item"><b>Challenge:</b> ${x.q}<br><input id="ctfAnswer" placeholder="Your answer"><button class="btn" onclick="checkCTF('${escapeJs(x.a)}')">Submit</button></div>`;
+}
+function checkCTF(answer){
+  const v=(document.getElementById("ctfAnswer")?.value||"").toLowerCase();
+  const ok=v.includes(answer.toLowerCase().split(" ")[0]);
+  document.getElementById("ctfResult").innerHTML=`<div class="item ${ok?"success":"warning"}">${ok?"Correct! +10 XP":"Not quite. Review the concept and try again."}</div>`;
+  if(ok && !data.ctfDone){data.ctfDone=true;data.xp+=10;save();}
+}
+
+let quizState={list:[],index:0,score:0};
+function startQuiz(){
+  quizState={list:[...questions].sort(()=>Math.random()-.5),index:0,score:0}; renderQuizQuestion();
+}
+function renderQuizQuestion(){
+  const box=document.getElementById("quizBox");
+  if(quizState.index>=quizState.list.length){
+    data.bestScore=Math.max(data.bestScore||0,quizState.score); data.xp+=quizState.score*5; save();
+    box.innerHTML=`<h3>Quiz Complete 🎉</h3><p>Score: <b>${quizState.score}/10</b></p><p class="success">+${quizState.score*5} XP</p><button class="btn" onclick="startQuiz()">Play Again</button>`; return;
+  }
+  const q=quizState.list[quizState.index];
+  box.innerHTML=`<p class="small">Question ${quizState.index+1}/10</p><h3>${escapeHtml(q.q)}</h3>${q.a.map((a,i)=>`<button class="option" onclick="answerQuiz(${i})">${escapeHtml(a)}</button>`).join("")}`;
+}
+function answerQuiz(i){
+  const q=quizState.list[quizState.index];
+  if(i===q.c) quizState.score++;
+  quizState.index++; renderQuizQuestion();
+}
+
+let scenarioIndex=0;
+function renderScenario(){
+  const scenarios=[
+    {q:"You receive an unexpected password-reset email. What is safer?",a:["Click the email link","Open the official site directly"],c:1},
+    {q:"A colleague asks for your OTP. What is safer?",a:["Share it","Never share the OTP"],c:1},
+    {q:"A public computer asks to save your password. What is safer?",a:["Save it","Do not save it"],c:1}
+  ];
+  const s=scenarios[scenarioIndex%scenarios.length];
+  document.getElementById("scenarioBox").innerHTML=`<h3>${escapeHtml(s.q)}</h3>${s.a.map((a,i)=>`<button class="option" onclick="answerScenario(${i},${s.c})">${escapeHtml(a)}</button>`).join("")}`;
+}
+function answerScenario(i,c){
+  document.getElementById("scenarioBox").innerHTML=`<div class="item ${i===c?"success":"warning"}">${i===c?"Good defensive choice!":"Review the safer defensive response."}</div><button class="btn" onclick="scenarioIndex++;renderScenario()">Next</button>`;
+}
+
+function passwordCheck(){
+  const p=document.getElementById("password")?.value||"";
+  let score=0; if(p.length>=8)score++; if(/[a-z]/.test(p))score++; if(/[A-Z]/.test(p))score++; if(/\d/.test(p))score++; if(/[^A-Za-z0-9]/.test(p))score++;
+  const bar=document.getElementById("passwordBar"); if(bar)bar.style.width=(score*20)+"%";
+  const text=document.getElementById("passwordText"); if(text)text.textContent=p?(["Very weak","Weak","Fair","Strong","Very strong","Excellent"][score]):"";
+}
+function encodeBase64(){try{document.getElementById("base64Output").textContent=btoa(unescape(encodeURIComponent(document.getElementById("base64Input").value||"")));}catch(e){document.getElementById("base64Output").textContent="Encoding failed.";}}
+function decodeBase64(){try{document.getElementById("base64Output").textContent=decodeURIComponent(escape(atob(document.getElementById("base64Input").value||"")));}catch(e){document.getElementById("base64Output").textContent="Invalid Base64 text.";}}
+function urlChecklist(){document.getElementById("urlOutput").innerHTML=`<div class="item">✓ Check the domain spelling<br>✓ Prefer HTTPS<br>✓ Be cautious with urgent requests<br>✓ Never enter credentials after following an unexpected link</div>`;}
+
+let rapidTimer=null,rapidEnd=0,rapidScore=0;
+function startRapid(){
+  clearInterval(rapidTimer); rapidScore=0; rapidEnd=Date.now()+30000; rapidQuestion();
+  rapidTimer=setInterval(()=>{if(Date.now()>=rapidEnd){clearInterval(rapidTimer);document.getElementById("rapidBox").innerHTML=`<div class="item success">Time! Score: ${rapidScore}</div>`;data.xp+=rapidScore*2;save();}},250);
+}
+function rapidQuestion(){
+  const q=questions[Math.floor(Math.random()*questions.length)];
+  document.getElementById("rapidBox").innerHTML=`<p class="small">30-second challenge</p><h3>${escapeHtml(q.q)}</h3>${q.a.map((a,i)=>`<button class="option" onclick="rapidAnswer(${i},${q.c})">${escapeHtml(a)}</button>`).join("")}`;
+}
+function rapidAnswer(i,c){if(Date.now()>=rapidEnd)return;if(i===c)rapidScore++;rapidQuestion();}
+
+let flashIndex=-1,flashFront=true;
+function nextFlashcard(){flashIndex=(flashIndex+1)%flashcards.length;flashFront=true;renderFlashcard();}
+function flipFlashcard(){if(flashIndex<0){nextFlashcard();return;}flashFront=!flashFront;renderFlashcard();}
+function renderFlashcard(){const e=document.getElementById("flashcard");if(e)e.textContent=flashIndex<0?"Press Next Card":(flashFront?flashcards[flashIndex][0]:flashcards[flashIndex][1]);}
+
+let timerSeconds=1500,timerInterval=null;
+function renderTimer(){const m=String(Math.floor(timerSeconds/60)).padStart(2,"0"),s=String(timerSeconds%60).padStart(2,"0");document.getElementById("timer").textContent=`${m}:${s}`;}
+function startTimer(){if(timerInterval)return;timerInterval=setInterval(()=>{timerSeconds--;renderTimer();if(timerSeconds<=0){clearInterval(timerInterval);timerInterval=null;document.getElementById("timerMessage").textContent="Study session complete! +20 XP";data.xp+=20;save();}},1000);}
+function pauseTimer(){clearInterval(timerInterval);timerInterval=null;}
+function resetTimer(){pauseTimer();timerSeconds=1500;renderTimer();document.getElementById("timerMessage").textContent="";}
+function dailyMission(){if(data.dailyDone){document.getElementById("dailyResult").textContent="Already completed today.";return;}data.dailyDone=true;data.xp+=20;save();document.getElementById("dailyResult").innerHTML=`<span class="success">Mission complete! +20 XP</span>`;}
+
+function addTask(){const input=document.getElementById("taskInput"),v=(input?.value||"").trim();if(!v)return;data.tasks.push({text:v,done:false});input.value="";save();}
+function toggleTask(i){if(data.tasks[i])data.tasks[i].done=!data.tasks[i].done;save();}
+function deleteTask(i){data.tasks.splice(i,1);save();}
+function renderTasks(){const box=document.getElementById("taskList");if(!box)return;box.innerHTML=(data.tasks||[]).map((t,i)=>`<div class="item"><label><input type="checkbox" ${t.done?"checked":""} onchange="toggleTask(${i})"> ${escapeHtml(t.text)}</label> <button class="btn alt" onclick="deleteTask(${i})">Delete</button></div>`).join("")||`<p class="small">No tasks yet.</p>`;}
+function saveNotes(){data.notes=document.getElementById("notesInput").value||"";save();document.getElementById("notesMessage").textContent="Notes saved locally.";}
+function clearNotes(){data.notes="";document.getElementById("notesInput").value="";save();document.getElementById("notesMessage").textContent="Notes cleared.";}
+function bookmark(name){if(!data.bookmarks.includes(name))data.bookmarks.push(name);save();}
+function removeBookmark(i){data.bookmarks.splice(i,1);save();}
+function renderBookmarks(){const box=document.getElementById("bookmarkList");if(!box)return;box.innerHTML=(data.bookmarks||[]).map((b,i)=>`<div class="item">🔖 ${escapeHtml(b)} <button class="btn alt" onclick="removeBookmark(${i})">Remove</button></div>`).join("")||`<p class="small">No bookmarks yet.</p>`;}
+
+function countBadges(){let n=0;if(data.xp>=100)n++;if(data.completed.length>=3)n++;if(data.bestScore>=7)n++;if(data.completed.length===courses.length)n++;return n;}
+function renderAchievements(){const box=document.getElementById("achievementGrid");if(!box)return;const a=[
+  ["⚡ XP Starter",data.xp>=100,"Earn 100 XP"],["📚 Course Builder",data.completed.length>=3,"Complete 3 courses"],["🧠 Quiz Master",data.bestScore>=7,"Score 7/10 or more"],["🏆 All Courses",data.completed.length===courses.length,"Complete all courses"]
+];box.innerHTML=a.map(x=>`<div class="card"><span class="badge">${x[1]?"Unlocked":"Locked"}</span><h3>${x[0]}</h3><p>${x[2]}</p></div>`).join("");}
+function renderLeaderboard(){const box=document.getElementById("leaderboard");if(!box)return;const rows=[{name:data.name||"Guest",xp:data.xp,level:getLevel()},{name:"Cyber Learner",xp:250,level:3},{name:"Security Student",xp:180,level:2}].sort((a,b)=>b.xp-a.xp);box.innerHTML=rows.map(r=>`<tr><td>${escapeHtml(r.name)}</td><td>${r.xp}</td><td>${r.level}</td></tr>`).join("");}
+function renderCertificate(){const box=document.getElementById("certificateBox");if(!box)return;const unlocked=!!data.name&&data.bestScore>=7;if(!unlocked){box.innerHTML=`<p class="small">Certificate locked. Enter your name and score at least 7/10 in the quiz.</p>`;return;}box.innerHTML=`<div class="card"><h3>🏅 Certificate Unlocked</h3><p>This educational certificate recognizes completion of a cybersecurity learning milestone.</p><p><b>${escapeHtml(data.name)}</b></p><p>Best Quiz Score: ${data.bestScore}/10</p><button class="btn" onclick="printCertificate()">Print Certificate</button><p class="small">Educational/demo certificate — not an accredited professional certification.</p></div>`;}
+function printCertificate(){const w=window.open("","_blank");if(!w)return;w.document.write(`<html><head><title>Cyber Security Hub Certificate</title><style>body{font-family:Arial;text-align:center;padding:60px}h1{font-size:40px} .box{border:4px solid #111;padding:50px}</style></head><body><div class="box"><h1>Cyber Security Hub</h1><h2>Certificate of Learning</h2><p>This certifies that</p><h2>${escapeHtml(data.name)}</h2><p>achieved a quiz score of ${data.bestScore}/10.</p><p>Educational / Demo Certificate</p></div><script>window.print()<\/script></body></html>`);w.document.close();}
+function resetProgress(){if(!confirm("Reset all local progress on this browser?"))return;data={name:"",xp:0,completed:[],bestScore:0,streak:0,theme:"dark",notes:"",tasks:[],bookmarks:[],dailyDone:false,ctfDone:false};save();document.body.classList.remove("light");}
+
+function escapeHtml(s){return String(s??"").replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"}[c]));}
+function escapeJs(s){return String(s??"").replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\n/g,"\\n");}
+
+/* =========================
+   STARTUP
+========================= */
+document.addEventListener("DOMContentLoaded",()=>{
+  document.body.classList.toggle("light",data.theme==="light");
+  const notes=document.getElementById("notesInput");if(notes)notes.value=data.notes||"";
+  renderCourses();renderFlashcard();renderScenario();renderTimer();updateUI();
+  const tip=document.getElementById("tip");if(tip)tip.textContent=tips[Math.floor(Math.random()*tips.length)];
+  const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";s.onload=initSupabase;s.onerror=()=>setAuthStatus("Could not load Supabase library. Check your internet connection.","danger");document.head.appendChild(s);
+});
+
+
+
+</script>
+</body>
+</html>
