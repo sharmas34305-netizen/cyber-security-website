@@ -1,248 +1,395 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<meta name="description" content="Cyber Security Hub V4">
-<title>Cyber Security Hub - V4</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Security Hub V5</title>
 
 <style>
 *{
-box-sizing:border-box;
-scroll-behavior:smooth
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
 }
 
 body{
-margin:0;
-background:#050505;
-color:#baffc9;
-font-family:monospace;
-line-height:1.6
+  font-family:Arial,sans-serif;
+  background:#050807;
+  color:#eaffea;
+  line-height:1.6;
 }
 
 header{
-text-align:center;
-padding:45px 15px 35px;
-border-bottom:1px solid #00ff66
+  background:#07120d;
+  border-bottom:1px solid #19ff75;
+  padding:18px 8%;
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 
-header h1{
-margin:0;
-color:#00ff66;
-font-size:clamp(30px,8vw,60px);
-text-shadow:0 0 15px #00ff66;
-letter-spacing:2px
+.logo{
+  color:#19ff75;
+  font-size:25px;
+  font-weight:bold;
 }
 
-header p{
-color:#9affae;
-font-size:clamp(14px,3.5vw,20px)
+.tagline{
+  color:#8ba993;
+  font-size:13px;
 }
 
 nav{
-position:sticky;
-top:0;
-z-index:100;
-background:#050505;
-border-bottom:1px solid #00ff66;
-text-align:center;
-padding:14px 5px
+  margin-top:12px;
 }
 
 nav a{
-color:#00ff66;
-text-decoration:none;
-font-weight:bold;
-margin:0 8px;
-font-size:13px
+  color:white;
+  text-decoration:none;
+  margin-right:18px;
+  font-size:14px;
+}
+
+nav a:hover{
+  color:#19ff75;
 }
 
 section{
-max-width:1050px;
-margin:auto;
-padding:65px 20px
+  padding:70px 8%;
 }
 
 .hero{
-text-align:center;
-min-height:600px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center
+  min-height:500px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:
+  radial-gradient(circle at center,#10351f 0%,#050807 55%);
 }
 
-.hero h2{
-font-size:clamp(28px,7vw,52px);
-color:#00ff66;
-text-shadow:0 0 15px #00ff66
+.hero h1{
+  font-size:42px;
+  color:#19ff75;
+  margin-bottom:15px;
 }
 
 .hero p{
-max-width:700px;
-font-size:16px
+  color:#b8cabb;
+  max-width:650px;
+  margin-bottom:25px;
 }
 
-button{
-border:0;
-border-radius:10px;
-background:#00ff66;
-color:#001b08;
-padding:15px 25px;
-font-family:monospace;
-font-weight:bold;
-font-size:16px;
-cursor:pointer;
-box-shadow:0 0 18px #00ff66;
-margin:8px
+.btn{
+  display:inline-block;
+  border:none;
+  background:#19ff75;
+  color:#031008;
+  padding:12px 22px;
+  border-radius:7px;
+  font-weight:bold;
+  cursor:pointer;
+  text-decoration:none;
 }
 
-button:hover{
-transform:scale(1.03)
+.btn:hover{
+  background:#8affb5;
 }
 
-.stats,.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:12px
-}
-
-.stat,.card,.lesson,.quiz-box,.progress-box{
-border:1px solid #005f2a;
-border-radius:10px;
-padding:22px;
-background:#080808
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  padding-top:30px;
 }
 
 .stat{
-text-align:center
+  background:#0b1710;
+  border:1px solid #173d26;
+  padding:22px;
+  border-radius:12px;
+  text-align:center;
 }
 
-.stat strong{
-display:block;
-color:#00ff66;
-font-size:32px
+.stat h2{
+  color:#19ff75;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+}
+
+.title{
+  text-align:center;
+  color:#19ff75;
+  font-size:30px;
+  margin-bottom:35px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.card{
+  background:#0a120d;
+  border:1px solid #174b2b;
+  padding:22px;
+  border-radius:12px;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:#19ff75;
 }
 
 .card h3{
-color:#00ff66;
-margin-top:0
+  color:#19ff75;
+  margin-bottom:10px;
 }
 
-.card button{
-font-size:13px;
-padding:10px 14px;
-box-shadow:none
+.card p{
+  color:#aab9ae;
+  font-size:14px;
+  margin-bottom:15px;
 }
 
-.lesson{
-margin-top:20px
+.lesson-box{
+  margin-top:25px;
+  background:#09150e;
+  border:1px solid #19ff75;
+  border-radius:12px;
+  padding:25px;
+  display:none;
 }
 
-.lesson h3{
-color:#00ff66
+.lesson-box h3{
+  color:#19ff75;
+  margin-bottom:15px;
 }
 
-.hidden{
-display:none
+.lesson-box li{
+  margin:8px 0;
 }
 
-h2{
-text-align:center;
-color:#00ff66
+.dashboard{
+  background:#07110b;
+  border:1px solid #174b2b;
+  border-radius:15px;
+  padding:25px;
+  max-width:900px;
+  margin:auto;
 }
 
-.quiz-box{
-max-width:700px;
-margin:20px auto
+.name-area{
+  display:flex;
+  gap:10px;
+  margin-bottom:25px;
 }
 
-.option{
-display:block;
-width:100%;
-text-align:left;
-background:#111;
-color:#baffc9;
-border:1px solid #005f2a;
-box-shadow:none;
-margin:10px 0
+input{
+  width:100%;
+  padding:12px;
+  border-radius:7px;
+  border:1px solid #285b38;
+  background:#050807;
+  color:white;
+  outline:none;
 }
 
-.option:hover{
-background:#123
+input:focus{
+  border-color:#19ff75;
 }
 
-#quizResult{
-color:#00ff66;
-font-size:20px;
-text-align:center;
-font-weight:bold
+.progress-bg{
+  height:18px;
+  background:#142119;
+  border-radius:20px;
+  overflow:hidden;
+  margin:10px 0 20px;
 }
 
 .progress-bar{
-height:24px;
-border:1px solid #00ff66;
-border-radius:20px;
-overflow:hidden;
-margin:15px 0
+  height:100%;
+  width:0%;
+  background:#19ff75;
+  transition:.5s;
 }
 
-#progressFill{
-height:100%;
-width:0;
-background:#00ff66;
-color:#001b08;
-text-align:center;
-font-weight:bold
+.dashboard-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
 }
 
-form{
-max-width:600px;
-margin:auto
+.box{
+  background:#0b1710;
+  border:1px solid #173d26;
+  padding:18px;
+  border-radius:10px;
+  text-align:center;
 }
 
-input,textarea{
-width:100%;
-padding:13px;
-margin:8px 0;
-background:#080808;
-color:#baffc9;
-border:1px solid #005f2a;
-border-radius:6px;
-font-family:monospace
+.box strong{
+  display:block;
+  color:#19ff75;
+  font-size:25px;
 }
 
-textarea{
-min-height:120px
+.learning-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.topic{
+  background:#0a120d;
+  border-left:3px solid #19ff75;
+  padding:15px;
+}
+
+.quiz{
+  max-width:700px;
+  margin:auto;
+  background:#09150e;
+  border:1px solid #174b2b;
+  padding:25px;
+  border-radius:12px;
+}
+
+.question{
+  color:#19ff75;
+  font-size:20px;
+  margin-bottom:20px;
+}
+
+.option{
+  display:block;
+  width:100%;
+  text-align:left;
+  margin:10px 0;
+  padding:13px;
+  background:#0d1b12;
+  color:white;
+  border:1px solid #285b38;
+  border-radius:7px;
+  cursor:pointer;
+}
+
+.option:hover{
+  border-color:#19ff75;
+}
+
+.feedback{
+  margin:15px 0;
+  font-weight:bold;
+}
+
+.quiz-progress{
+  color:#8ba993;
+  margin-bottom:15px;
+}
+
+.certificate{
+  max-width:750px;
+  margin:auto;
+  padding:35px;
+  border:3px solid #19ff75;
+  background:#07120d;
+  text-align:center;
+  border-radius:15px;
+  display:none;
+}
+
+.certificate h2{
+  color:#19ff75;
+  font-size:32px;
+}
+
+.certificate .student{
+  font-size:28px;
+  margin:20px 0;
+  color:white;
+}
+
+.login{
+  max-width:450px;
+  margin:auto;
+  background:#09150e;
+  border:1px solid #174b2b;
+  border-radius:12px;
+  padding:25px;
+}
+
+.login h3{
+  color:#19ff75;
+  margin-bottom:20px;
+}
+
+.login input{
+  margin-bottom:12px;
 }
 
 footer{
-text-align:center;
-border-top:1px solid #00ff66;
-padding:20px;
-color:#65c97d
+  text-align:center;
+  padding:30px;
+  background:#030604;
+  color:#718277;
+  border-top:1px solid #173d26;
+}
+
+.hidden{
+  display:none;
+}
+
+@media(max-width:800px){
+  .cards{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .dashboard-grid{
+    grid-template-columns:1fr;
+  }
 }
 
 @media(max-width:600px){
+  header{
+    padding:15px 5%;
+  }
 
-nav a{
-margin:0 5px;
-font-size:11px
-}
+  nav a{
+    display:inline-block;
+    margin:5px 8px 5px 0;
+  }
 
-section{
-padding:50px 14px
-}
+  section{
+    padding:50px 5%;
+  }
 
-.hero{
-min-height:560px
-}
+  .hero h1{
+    font-size:30px;
+  }
 
-.card,.stat,.lesson,.quiz-box{
-padding:18px
-}
+  .cards{
+    grid-template-columns:1fr;
+  }
 
+  .learning-list{
+    grid-template-columns:1fr;
+  }
+
+  .name-area{
+    flex-direction:column;
+  }
 }
 </style>
 </head>
@@ -250,573 +397,818 @@ padding:18px
 <body>
 
 <header>
-<h1>CYBER SECURITY</h1>
-<p>Learn • Practice • Secure</p>
+  <div class="logo">🛡️ CYBER SECURITY HUB</div>
+  <div class="tagline">Learn • Practice • Secure</div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#courses">Courses</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#learn">Learn</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#certificate">Certificate</a>
+    <a href="#about">About</a>
+  </nav>
 </header>
 
-<nav>
-<a href="#home">Home</a>
-<a href="#courses">Courses</a>
-<a href="#learn">Learn</a>
-<a href="#quiz">Quiz</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-</nav>
+<!-- HOME -->
+<section class="hero" id="home">
+  <h1>Welcome to Cyber Security Hub 👨‍💻</h1>
 
-<section id="home" class="hero">
+  <p>
+    Learn cybersecurity concepts, networking, Linux, web security
+    and cyber defense through simple interactive lessons and quizzes.
+  </p>
 
-<h2>Welcome to Cyber Security Hub 👨‍💻</h2>
+  <a href="#courses" class="btn">START LEARNING</a>
 
-<p>
-Cybersecurity fundamentals सीखें,
-ethical security concepts समझें और
-अपनी digital security skills बनाएं।
-</p>
+  <div class="stats container">
+    <div class="stat">
+      <h2>4+</h2>
+      <p>Courses</p>
+    </div>
 
-<a href="#courses">
-<button>START LEARNING 🚀</button>
-</a>
+    <div class="stat">
+      <h2>20+</h2>
+      <p>Topics</p>
+    </div>
 
-<div class="stats" style="width:100%;margin-top:45px">
-
-<div class="stat">
-<strong>4+</strong>
-Courses
-</div>
-
-<div class="stat">
-<strong>20+</strong>
-Topics
-</div>
-
-<div class="stat">
-<strong id="homeProgress">0%</strong>
-Learning Progress
-</div>
-
-</div>
-
+    <div class="stat">
+      <h2 id="homeProgress">0%</h2>
+      <p>Learning Progress</p>
+    </div>
+  </div>
 </section>
 
+<!-- COURSES -->
 <section id="courses">
+  <div class="container">
+    <h2 class="title">📚 Cyber Security Courses</h2>
 
-<h2>📚 COURSES</h2>
+    <div class="cards">
 
-<div class="cards">
+      <div class="card">
+        <h3>🌐 Networking</h3>
+        <p>Learn IP, TCP/IP, DNS, ports and basic networking.</p>
+        <button class="btn" onclick="openLesson('networking')">
+          OPEN COURSE
+        </button>
+      </div>
 
-<div class="card">
-<h3>🌐 Networking</h3>
-<p>
-IP, Ports, Protocols और Network Fundamentals सीखें।
-</p>
-<button onclick="showLesson('networking')">
-OPEN COURSE
-</button>
-</div>
+      <div class="card">
+        <h3>🐧 Linux</h3>
+        <p>Learn Linux commands, files, permissions and processes.</p>
+        <button class="btn" onclick="openLesson('linux')">
+          OPEN COURSE
+        </button>
+      </div>
 
-<div class="card">
-<h3>🐧 Linux</h3>
-<p>
-Linux basics और essential commands की practice करें।
-</p>
-<button onclick="showLesson('linux')">
-OPEN COURSE
-</button>
-</div>
+      <div class="card">
+        <h3>🌐 Web Security</h3>
+        <p>Understand common web security concepts and defenses.</p>
+        <button class="btn" onclick="openLesson('web')">
+          OPEN COURSE
+        </button>
+      </div>
 
-<div class="card">
-<h3>🔐 Web Security</h3>
-<p>
-Web security fundamentals और legal practice concepts समझें।
-</p>
-<button onclick="showLesson('web')">
-OPEN COURSE
-</button>
-</div>
+      <div class="card">
+        <h3>🛡️ Cyber Defense</h3>
+        <p>Learn security monitoring, passwords and defensive practices.</p>
+        <button class="btn" onclick="openLesson('defense')">
+          OPEN COURSE
+        </button>
+      </div>
 
-<div class="card">
-<h3>🛡️ Cyber Defense</h3>
-<p>
-Systems और websites को सुरक्षित रखने के fundamentals सीखें।
-</p>
-<button onclick="showLesson('defense')">
-OPEN COURSE
-</button>
-</div>
+    </div>
 
-</div>
-
-<div id="lessonArea" class="lesson hidden">
-
-<h3 id="lessonTitle"></h3>
-
-<div id="lessonText"></div>
-
-<button onclick="document.getElementById('quiz').scrollIntoView()">
-TAKE QUIZ 📝
-</button>
-
-</div>
-
+    <div id="lessonBox" class="lesson-box"></div>
+  </div>
 </section>
 
+<!-- DASHBOARD -->
+<section id="dashboard">
+  <div class="container">
+    <h2 class="title">👤 Student Dashboard</h2>
+
+    <div class="dashboard">
+
+      <div class="name-area">
+        <input
+          type="text"
+          id="studentName"
+          placeholder="Enter your name"
+        >
+
+        <button class="btn" onclick="saveName()">
+          SAVE
+        </button>
+      </div>
+
+      <h3>Overall Learning Progress</h3>
+
+      <div class="progress-bg">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+      <p id="progressText">0% Completed</p>
+
+      <br>
+
+      <div class="dashboard-grid">
+
+        <div class="box">
+          <strong id="completedCourses">0</strong>
+          Courses Completed
+        </div>
+
+        <div class="box">
+          <strong id="quizScore">0/5</strong>
+          Quiz Score
+        </div>
+
+        <div class="box">
+          <strong id="dashboardName">Guest</strong>
+          Student
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LEARN -->
 <section id="learn">
+  <div class="container">
+    <h2 class="title">🎓 Learning Center</h2>
 
-<h2>💡 WHAT YOU WILL LEARN</h2>
+    <div class="learning-list">
 
-<div class="lesson">
+      <div class="topic">
+        <b>Networking Basics</b><br>
+        IP Address, MAC Address, TCP/IP, DNS and Ports
+      </div>
 
-<ul>
+      <div class="topic">
+        <b>Linux Basics</b><br>
+        Files, Directories, Permissions and Processes
+      </div>
 
-<li>🌐 Networking Fundamentals</li>
-<li>🐧 Linux Basics & Commands</li>
-<li>🔐 Web Security Fundamentals</li>
-<li>🛡️ Cyber Defense Basics</li>
-<li>🔑 Password & Account Security</li>
-<li>📱 Mobile & Digital Security</li>
-<li>🛡️ Safe Internet Practices</li>
-<li>⚖️ Ethical & Legal Cybersecurity</li>
+      <div class="topic">
+        <b>Web Security</b><br>
+        Authentication, HTTPS, XSS concepts and security headers
+      </div>
 
-</ul>
+      <div class="topic">
+        <b>Password Security</b><br>
+        Strong passwords, MFA and password protection
+      </div>
 
-</div>
+      <div class="topic">
+        <b>Cyber Threats</b><br>
+        Phishing, malware, social engineering and scams
+      </div>
 
+      <div class="topic">
+        <b>Cyber Defense</b><br>
+        Updates, backups, monitoring and incident response
+      </div>
+
+    </div>
+  </div>
 </section>
 
+<!-- QUIZ -->
 <section id="quiz">
+  <div class="container">
+    <h2 class="title">🧠 Cyber Security Quiz</h2>
 
-<h2>📝 CYBER SECURITY QUIZ</h2>
+    <div class="quiz">
 
-<div class="quiz-box">
+      <div id="quizStart">
+        <p>
+          Test your basic cybersecurity knowledge with 5 questions.
+        </p>
 
-<p id="question"></p>
+        <br>
 
-<div id="options"></div>
+        <button class="btn" onclick="startQuiz()">
+          START QUIZ
+        </button>
+      </div>
 
-<p id="quizResult"></p>
+      <div id="quizArea" class="hidden">
 
-<button
-id="nextBtn"
-class="hidden"
-onclick="nextQuestion()">
-NEXT QUESTION ➜
-</button>
+        <div class="quiz-progress" id="questionNumber"></div>
 
-<button
-id="restartBtn"
-class="hidden"
-onclick="startQuiz()">
-RESTART QUIZ 🔄
-</button>
+        <div class="question" id="question"></div>
 
-</div>
+        <div id="options"></div>
 
-<div class="progress-box">
+        <div class="feedback" id="feedback"></div>
 
-<h3 style="color:#00ff66">
-📊 YOUR PROGRESS
-</h3>
+        <button
+          id="nextButton"
+          class="btn hidden"
+          onclick="nextQuestion()"
+        >
+          NEXT QUESTION
+        </button>
 
-<div class="progress-bar">
+      </div>
 
-<div id="progressFill">
-0%
-</div>
+      <div id="quizResult" class="hidden">
+        <h3>🎉 Quiz Completed!</h3>
 
-</div>
+        <br>
 
-<p id="progressText">
-Quiz progress: 0%
-</p>
+        <p id="resultText"></p>
 
-<p>
-Progress आपके browser में save होता है।
-</p>
+        <br>
 
-</div>
+        <button class="btn" onclick="restartQuiz()">
+          RESTART QUIZ
+        </button>
+      </div>
 
+    </div>
+  </div>
 </section>
 
+<!-- CERTIFICATE -->
+<section id="certificate">
+  <div class="container">
+    <h2 class="title">🏆 Certificate</h2>
+
+    <div id="certificateBox" class="certificate">
+
+      <p>CYBER SECURITY HUB</p>
+
+      <h2>Certificate of Completion</h2>
+
+      <p>This certificate is presented to</p>
+
+      <div class="student" id="certificateName">
+        Student
+      </div>
+
+      <p>
+        for completing the Cyber Security Hub learning activity.
+      </p>
+
+      <br>
+
+      <p id="certificateScore">
+        Quiz Score: 0/5
+      </p>
+
+      <br>
+
+      <p>🛡️ Keep Learning • Keep Practicing • Stay Secure</p>
+
+    </div>
+
+    <div id="certificateLocked" class="dashboard">
+      <p>
+        Complete the quiz and enter your name to unlock your
+        certificate section.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- LOGIN -->
+<section id="login">
+  <div class="container">
+
+    <h2 class="title">🔐 Student Login</h2>
+
+    <div class="login">
+
+      <h3>Demo Login / Signup</h3>
+
+      <p style="color:#9bad9f;font-size:14px;margin-bottom:15px;">
+        This is a frontend demo. Account information is stored only
+        in your browser.
+      </p>
+
+      <input
+        type="text"
+        id="loginName"
+        placeholder="Student Name"
+      >
+
+      <input
+        type="email"
+        id="loginEmail"
+        placeholder="Email"
+      >
+
+      <input
+        type="password"
+        id="loginPassword"
+        placeholder="Password"
+      >
+
+      <button class="btn" onclick="demoLogin()">
+        LOGIN / SIGNUP
+      </button>
+
+      <p id="loginMessage" style="margin-top:15px;"></p>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
 <section id="about">
+  <div class="container">
 
-<h2>ℹ️ ABOUT</h2>
+    <h2 class="title">ℹ️ About</h2>
 
-<div class="lesson">
+    <div class="dashboard">
 
-<p>
-Cyber Security Hub एक educational website है
-जो cybersecurity, networking, Linux और
-digital security के fundamentals सिखाने के लिए बनाई गई है।
-</p>
+      <p>
+        Cyber Security Hub is an educational website for learning
+        basic cybersecurity concepts.
+      </p>
 
-<p>
-हमेशा केवल authorized और legal environments
-में security testing करें।
-</p>
+      <br>
 
-</div>
+      <p>
+        Topics include networking, Linux, web security,
+        cybersecurity awareness and defensive security.
+      </p>
 
-</section>
+      <br>
 
-<section id="contact">
+      <p>
+        ⚠️ Security testing should only be performed on systems
+        you own or have explicit permission to test.
+      </p>
 
-<h2>📩 CONTACT</h2>
+    </div>
 
-<form onsubmit="sendMessage(event)">
-
-<input
-type="text"
-placeholder="आपका नाम"
-required
->
-
-<input
-type="email"
-placeholder="Email"
-required
->
-
-<textarea
-placeholder="आपका संदेश"
-required>
-</textarea>
-
-<button type="submit">
-SEND MESSAGE
-</button>
-
-</form>
-
-<p
-id="msg"
-style="text-align:center;color:#00ff66"
-class="hidden">
-
-Message demo successfully sent! ✅
-
-</p>
-
+  </div>
 </section>
 
 <footer>
-© 2026 Cyber Security Hub V4
+  © 2026 Cyber Security Hub | Learn • Practice • Secure
 </footer>
 
 <script>
 
-const lessons={
+const lessons = {
 
-networking:{
-title:'🌐 Networking Fundamentals',
+  networking: {
+    title:"🌐 Networking Course",
+    topics:[
+      "What is an IP Address?",
+      "MAC Address",
+      "TCP/IP Model",
+      "DNS Basics",
+      "Common Network Ports"
+    ]
+  },
 
-text:`
-<p>
-Networking में devices आपस में data communicate करते हैं।
-</p>
+  linux:{
+    title:"🐧 Linux Course",
+    topics:[
+      "Linux File System",
+      "Basic Terminal Commands",
+      "File Permissions",
+      "Users and Groups",
+      "Processes"
+    ]
+  },
 
-<ul>
-<li>IP Address: device की network identity</li>
-<li>Port: network service का logical endpoint</li>
-<li>HTTP/HTTPS: web communication protocols</li>
-<li>DNS: domain name को IP address में resolve करता है</li>
-</ul>
-`
-},
+  web:{
+    title:"🌐 Web Security Course",
+    topics:[
+      "HTTPS",
+      "Authentication",
+      "Session Security",
+      "XSS Concepts",
+      "Security Headers"
+    ]
+  },
 
-linux:{
-title:'🐧 Linux Basics',
-
-text:`
-<p>
-Linux एक popular operating system family है
-जो cybersecurity और servers में widely used है।
-</p>
-
-<ul>
-<li>pwd — current directory</li>
-<li>ls — files और folders देखना</li>
-<li>cd — directory बदलना</li>
-<li>mkdir — folder बनाना</li>
-</ul>
-`
-},
-
-web:{
-title:'🔐 Web Security Fundamentals',
-
-text:`
-<p>
-Web security का उद्देश्य websites और
-users के data को सुरक्षित रखना है।
-</p>
-
-<ul>
-<li>Strong authentication</li>
-<li>Input validation</li>
-<li>HTTPS</li>
-<li>Secure session management</li>
-</ul>
-`
-},
-
-defense:{
-title:'🛡️ Cyber Defense Basics',
-
-text:`
-<p>
-Cyber defense में systems को attacks से बचाने
-के लिए preventive और monitoring controls
-इस्तेमाल किए जाते हैं।
-</p>
-
-<ul>
-<li>Updates और patches</li>
-<li>Backups</li>
-<li>MFA</li>
-<li>Logging और monitoring</li>
-</ul>
-`
-}
+  defense:{
+    title:"🛡️ Cyber Defense Course",
+    topics:[
+      "Strong Passwords",
+      "Multi-Factor Authentication",
+      "Phishing Awareness",
+      "Security Updates",
+      "Backups and Monitoring"
+    ]
+  }
 
 };
 
+let completedCourses =
+JSON.parse(localStorage.getItem("completedCourses") || "[]");
 
-function showLesson(k){
+function openLesson(course){
 
-const x=lessons[k];
+  const data = lessons[course];
 
-lessonTitle.textContent=x.title;
+  let html = `
+    <h3>${data.title}</h3>
+    <ul>
+  `;
 
-lessonText.innerHTML=x.text;
+  data.topics.forEach(topic=>{
+    html += `<li>✅ ${topic}</li>`;
+  });
 
-lessonArea.classList.remove('hidden');
+  html += `
+    </ul>
+    <br>
+    <button class="btn" onclick="completeCourse('${course}')">
+      MARK COURSE COMPLETE
+    </button>
+  `;
 
-lessonArea.scrollIntoView({
-behavior:'smooth'
-});
+  const box = document.getElementById("lessonBox");
 
+  box.innerHTML = html;
+  box.style.display = "block";
+
+  box.scrollIntoView({
+    behavior:"smooth",
+    block:"center"
+  });
 }
 
+function completeCourse(course){
 
-const questions=[
+  if(!completedCourses.includes(course)){
 
-{
-q:'DNS का मुख्य काम क्या है?',
-o:[
-'Domain को IP address से resolve करना',
-'Password बनाना',
-'File delete करना',
-'Battery charge करना'
-],
-a:0
-},
+    completedCourses.push(course);
 
-{
-q:"HTTPS में 'S' किसके लिए है?",
-o:[
-'Secure',
-'System',
-'Server',
-'Simple'
-],
-a:0
-},
+    localStorage.setItem(
+      "completedCourses",
+      JSON.stringify(completedCourses)
+    );
+  }
 
-{
-q:'Linux में files देखने के लिए सामान्य command कौन-सी है?',
-o:[
-'ls',
-'run',
-'showall',
-'files'
-],
-a:0
-},
+  updateDashboard();
 
-{
-q:'MFA का उद्देश्य क्या है?',
-o:[
-'एक से अधिक authentication factors इस्तेमाल करना',
-'Internet speed बढ़ाना',
-'Files compress करना',
-'Screen brightness बदलना'
-],
-a:0
-},
-
-{
-q:'Strong password के लिए क्या बेहतर है?',
-o:[
-'Unique और लंबा password',
-'हर जगह एक ही password',
-'123456',
-'अपना नाम'
-],
-a:0
+  alert("Course completed successfully! ✅");
 }
+
+let studentName =
+localStorage.getItem("studentName") || "";
+
+function saveName(){
+
+  const name =
+  document.getElementById("studentName").value.trim();
+
+  if(name === ""){
+    alert("Please enter your name.");
+    return;
+  }
+
+  studentName = name;
+
+  localStorage.setItem(
+    "studentName",
+    studentName
+  );
+
+  updateDashboard();
+
+  alert("Name saved successfully! 👤");
+}
+
+function updateDashboard(){
+
+  const totalCourses = 4;
+
+  const completed = completedCourses.length;
+
+  let progress =
+  Math.round((completed / totalCourses) * 100);
+
+  document.getElementById("progressBar")
+  .style.width = progress + "%";
+
+  document.getElementById("progressText")
+  .innerText =
+  progress + "% Completed";
+
+  document.getElementById("homeProgress")
+  .innerText =
+  progress + "%";
+
+  document.getElementById("completedCourses")
+  .innerText =
+  completed;
+
+  document.getElementById("dashboardName")
+  .innerText =
+  studentName || "Guest";
+
+  document.getElementById("studentName")
+  .value =
+  studentName;
+
+  updateCertificate();
+}
+
+const questions = [
+
+  {
+    q:"What does IP stand for?",
+    options:[
+      "Internet Protocol",
+      "Internal Program",
+      "Internet Process",
+      "Input Protocol"
+    ],
+    answer:0
+  },
+
+  {
+    q:"Which protocol is commonly used for secure web browsing?",
+    options:[
+      "HTTP",
+      "HTTPS",
+      "FTP",
+      "SMTP"
+    ],
+    answer:1
+  },
+
+  {
+    q:"Which is an example of multi-factor authentication?",
+    options:[
+      "Only a password",
+      "Password + verification code",
+      "Only username",
+      "Only email"
+    ],
+    answer:1
+  },
+
+  {
+    q:"What is phishing?",
+    options:[
+      "A backup method",
+      "A social engineering attack",
+      "A programming language",
+      "A firewall"
+    ],
+    answer:1
+  },
+
+  {
+    q:"Which practice improves security?",
+    options:[
+      "Using the same password everywhere",
+      "Ignoring updates",
+      "Using MFA",
+      "Sharing passwords"
+    ],
+    answer:2
+  }
 
 ];
 
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
 
-let current=0;
-let score=0;
-let answered=false;
-
+let savedScore =
+parseInt(localStorage.getItem("quizScore") || "0");
 
 function startQuiz(){
 
-current=0;
-score=0;
-answered=false;
+  currentQuestion = 0;
+  score = 0;
+  answered = false;
 
-quizResult.textContent='';
+  document.getElementById("quizStart")
+  .classList.add("hidden");
 
-restartBtn.classList.add('hidden');
+  document.getElementById("quizResult")
+  .classList.add("hidden");
 
-nextBtn.classList.add('hidden');
+  document.getElementById("quizArea")
+  .classList.remove("hidden");
 
-renderQuestion();
-
+  renderQuestion();
 }
-
 
 function renderQuestion(){
 
-answered=false;
+  answered = false;
 
-const q=questions[current];
+  const q = questions[currentQuestion];
 
-question.textContent=
-(current+1)+'. '+q.q;
+  document.getElementById("questionNumber")
+  .innerText =
+  "Question " +
+  (currentQuestion + 1) +
+  " of " +
+  questions.length;
 
-options.innerHTML='';
+  document.getElementById("question")
+  .innerText =
+  q.q;
 
-q.o.forEach((x,i)=>{
+  document.getElementById("feedback")
+  .innerText = "";
 
-const b=document.createElement('button');
+  document.getElementById("nextButton")
+  .classList.add("hidden");
 
-b.className='option';
+  const options =
+  document.getElementById("options");
 
-b.textContent=x;
+  options.innerHTML = "";
 
-b.onclick=()=>answer(i);
+  q.options.forEach((option,index)=>{
 
-options.appendChild(b);
+    const button =
+    document.createElement("button");
 
-});
+    button.className = "option";
 
+    button.innerText = option;
+
+    button.onclick =
+    ()=>answer(index);
+
+    options.appendChild(button);
+
+  });
 }
 
+function answer(index){
 
-function answer(i){
+  if(answered) return;
 
-if(answered)return;
+  answered = true;
 
-answered=true;
+  const q = questions[currentQuestion];
 
-if(i===questions[current].a){
+  const feedback =
+  document.getElementById("feedback");
 
-score++;
+  if(index === q.answer){
 
-quizResult.textContent='✅ Correct!';
+    score++;
 
+    feedback.innerText =
+    "✅ Correct answer!";
+
+  }else{
+
+    feedback.innerText =
+    "❌ Incorrect answer.";
+  }
+
+  document
+  .getElementById("nextButton")
+  .classList.remove("hidden");
 }
-
-else{
-
-quizResult.textContent=
-'❌ Not correct. सही answer: '+
-questions[current].o[questions[current].a];
-
-}
-
-document
-.querySelectorAll('.option')
-.forEach(b=>b.disabled=true);
-
-nextBtn.classList.remove('hidden');
-
-}
-
 
 function nextQuestion(){
 
-current++;
+  currentQuestion++;
 
-if(current<questions.length){
+  if(currentQuestion < questions.length){
 
-renderQuestion();
+    renderQuestion();
 
+  }else{
+
+    finishQuiz();
+  }
 }
-
-else{
-
-finishQuiz();
-
-}
-
-}
-
 
 function finishQuiz(){
 
-question.textContent='🎉 Quiz Complete!';
+  localStorage.setItem(
+    "quizScore",
+    score
+  );
 
-options.innerHTML='';
+  savedScore = score;
 
-nextBtn.classList.add('hidden');
+  document
+  .getElementById("quizArea")
+  .classList.add("hidden");
 
-restartBtn.classList.remove('hidden');
+  document
+  .getElementById("quizResult")
+  .classList.remove("hidden");
 
-quizResult.textContent=
-'Your Score: '+score+' / '+questions.length;
+  document.getElementById("resultText")
+  .innerText =
+  "Your score is " +
+  score +
+  " / " +
+  questions.length;
 
-const p=Math.round(
-score/questions.length*100
-);
-
-localStorage.setItem(
-'cyberProgress',
-p
-);
-
-updateProgress(p);
-
-}
-
-
-function updateProgress(p){
-
-progressFill.style.width=p+'%';
-
-progressFill.textContent=p+'%';
-
-progressText.textContent=
-'Quiz progress: '+p+'%';
-
-homeProgress.textContent=p+'%';
+  updateDashboard();
 
 }
 
+function restartQuiz(){
 
-function sendMessage(e){
+  document
+  .getElementById("quizResult")
+  .classList.add("hidden");
 
-e.preventDefault();
-
-msg.classList.remove('hidden');
-
-e.target.reset();
-
+  document
+  .getElementById("quizStart")
+  .classList.remove("hidden");
 }
 
+function updateCertificate(){
 
-updateProgress(
-Number(localStorage.getItem('cyberProgress')||0)
-);
+  const box =
+  document.getElementById("certificateBox");
 
-startQuiz();
+  const locked =
+  document.getElementById("certificateLocked");
 
-</script>
+  if(studentName && savedScore >= 3){
 
-</body>
-</html>
+    box.style.display = "block";
+
+    locked.style.display = "none";
+
+    document.getElementById("certificateName")
+    .innerText =
+    studentName;
+
+    document.getElementById("certificateScore")
+    .innerText =
+    "Quiz Score: " +
+    savedScore +
+    " / 5";
+
+  }else{
+
+    box.style.display = "none";
+
+    locked.style.display = "block";
+  }
+}
+
+function demoLogin(){
+
+  const name =
+  document.getElementById("loginName")
+  .value.trim();
+
+  const email =
+  document.getElementById("loginEmail")
+  .value.trim();
+
+  const password =
+  document.getElementById("loginPassword")
+  .value;
+
+  const message =
+  document.getElementById("loginMessage");
+
+  if(!name || !email || !password){
+
+    message.innerText =
+    "⚠️ Please fill all fields.";
+
+    return;
+  }
+
+  localStorage.setItem(
+    "studentName",
+    name
+  );
+
+  localStorage.setItem(
+    "studentEmail",
+    email
+  );
+
+  studentName = name;
+
+  message.innerText =
+  "✅ Demo login successful!";
+
+  updateDashboard();
+}
+
+window.onload = function(){
+
+  updateDashboard();
+
+  savedScore =
+  parseInt(
+ 
